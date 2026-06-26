@@ -82,6 +82,8 @@
   .btn.link{background:transparent;color:var(--red);box-shadow:none}
   .pulse{animation:pulse 2s ease-in-out infinite}
   @keyframes pulse{0%,100%{box-shadow:0 8px 20px rgba(236,28,36,.28)}50%{box-shadow:0 8px 30px rgba(236,28,36,.5)}}
+  .judgebtn{background:#fff;color:#a87b1f;border:1.5px solid #caa23a;position:relative;overflow:hidden;animation:judgeGlow 2.4s ease-in-out infinite}
+  @keyframes judgeGlow{0%,100%{box-shadow:0 4px 14px rgba(202,162,58,.18)}50%{box-shadow:0 6px 22px rgba(202,162,58,.42)}}
   .glowpulse{animation:pulse 2.2s ease-in-out infinite}
   @keyframes gp{0%,100%{box-shadow:0 8px 24px rgba(236,28,36,.3)}50%{box-shadow:0 8px 34px rgba(236,28,36,.55)}}
 
@@ -323,6 +325,15 @@
   .bk .bn{font-weight:600}.bk .bv{margin-left:auto;font-weight:800;font-variant-numeric:tabular-nums}
 
   .bucketcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:11px;transition:border .15s}
+  .bktabs{display:flex;gap:7px;overflow-x:auto;padding-bottom:2px;margin-bottom:12px}
+  .bktab{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:9px 13px;border-radius:13px;border:1.5px solid var(--line);background:#fff;font-size:12.5px;font-weight:700;color:var(--ink2);cursor:pointer;transition:.15s;white-space:nowrap}
+  .bktab .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+  .bktab-on{color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.12)}
+  /* clean segmented control (attachment style) */
+  .segtabs{display:grid;grid-template-columns:repeat(4,1fr);background:#eceef1;border-radius:13px;padding:4px;gap:3px;margin-bottom:14px}
+  .segtab{border:none;background:transparent;border-radius:10px;padding:10px 4px;font-size:12.5px;font-weight:700;color:var(--muted);cursor:pointer;transition:.15s;font-family:inherit;white-space:nowrap}
+  .segtab.on{background:#fff;color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.12)}
+  .bktabpct{font-weight:800;opacity:.85;margin-left:1px}
   .bucketcard.dragover{border-color:var(--ai2);box-shadow:var(--glow);background:#fcfbff}
   .bchead{display:flex;align-items:center;gap:10px;margin-bottom:4px}
   .bchead .dot{width:13px;height:13px;border-radius:4px}
@@ -487,6 +498,218 @@
   .sheet{background:#fff;width:100%;border-radius:24px 24px 0 0;padding:22px 20px 24px;animation:slideup .25s ease;text-align:center}
   .sheet .applogo{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,#ec1c24,#a90c12);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:13px;margin:0 auto 12px}
   .sheet h3{font-size:18px;margin:0 0 6px}.sheet p{font-size:13.5px;color:var(--ink2);line-height:1.5;margin:0 0 6px}
+
+  /* screen 3 bullets */
+  .agbul{margin:0;padding-left:16px;list-style:none}
+  .agbul li{position:relative;font-size:12px;color:var(--ink2);line-height:1.5;margin-bottom:6px;padding-left:4px}
+  .agbul li:before{content:'';position:absolute;left:-12px;top:7px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+  .agbul li b{color:var(--ink)}
+  .agbul.amber li:before{background:#e08600}.agbul.amber li{color:#6b4c00;font-size:12px}
+
+  /* screen 4 suggested chip */
+  .chat-suggest{display:flex;flex-direction:column;gap:4px;margin:2px 0 10px;padding-left:40px;animation:chatIn .3s ease}
+  .sugchip{align-self:flex-start;background:#fff;border:1.5px dashed;border-radius:20px;padding:8px 14px;font-size:13px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+  .sugspark{font-size:11px}
+  .sugnote{font-size:10.5px;color:var(--muted);line-height:1.35;max-width:240px}
+
+  /* orchestrate */
+  .judgestrip{display:flex;align-items:center;gap:12px;background:#14161c;border-radius:16px;padding:14px}
+  .weighwrap{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+  .weighrow{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 13px;box-shadow:var(--shadow)}
+  .weighpct{font-family:'Sora';font-weight:800;font-size:16px}
+
+  /* portfolio */
+  .sgbanner{display:flex;align-items:center;gap:10px;background:#eef3ff;border:1px solid #d6e3fb;border-radius:13px;padding:11px 13px;font-size:12px;color:#22436e;line-height:1.4;cursor:pointer;margin-bottom:14px}
+  .sglink{margin-left:auto;background:#2f6fd6;color:#fff;font-weight:700;font-size:12px;padding:6px 13px;border-radius:9px;flex-shrink:0}
+  .legend4{display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;margin-top:12px;text-align:left}
+  .lg{font-size:12px;color:var(--ink2);display:flex;align-items:center;gap:6px}.lg b{margin-left:auto;font-family:'Sora'}
+  .lg .swatch{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+  .bdot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .prodwrap{margin-top:4px}
+  .prodcard{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:11px 12px;box-shadow:var(--shadow);margin-bottom:9px}
+  .picon{width:38px;height:38px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:11px;flex-shrink:0}
+  .picon.sm{width:32px;height:32px;font-size:10px}
+  .pname{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.3;overflow:hidden;text-overflow:ellipsis}
+  .ptk{font-size:11px;color:var(--muted);margin-top:1px}
+  .pwt{font-family:'Sora';font-weight:800;font-size:15px;color:var(--ink)}
+  .pgrow{font-size:12px;font-weight:800;color:#1f9d57}.pfv{font-size:11px;color:var(--muted)}
+  .mk{font-size:11px;font-weight:800}.mk.ai{color:#caa23a}.mk.ed{color:#2f6fd6}
+  .editbtn{width:100%;background:#fff;border:1.5px dashed var(--line);border-radius:13px;padding:13px;font-size:13px;font-weight:700;color:var(--ink2);cursor:pointer;margin:4px 0 12px}
+
+  /* tune sandbox */
+  .coachstrip{display:flex;gap:11px;align-items:flex-start;background:linear-gradient(135deg,#fff,#f6f4ff);border:1px solid #e9e5ff;border-radius:14px;padding:13px;font-size:12.5px;line-height:1.5;color:var(--ink2);margin-bottom:14px}
+  .sbsec{margin-bottom:14px}
+  .sbsec-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+  .sbsec-c{background:var(--bg);border-radius:10px;padding:1px 8px;font-size:11px}
+  .sbscroll{max-height:280px;overflow-y:auto;padding-right:2px}
+  .schip{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 11px;margin-bottom:8px}
+  .schip.in{border-color:#cfe0ff;background:#f7faff}
+  .chipbtn{width:30px;height:30px;border-radius:9px;border:none;font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0}
+  .chipbtn.add{background:var(--red);color:#fff}.chipbtn.rm{background:#fff;border:1.5px solid var(--line);color:var(--muted)}
+  .sbempty{font-size:12px;color:var(--muted);text-align:center;padding:14px;background:var(--bg);border-radius:11px}
+  .sblegend{display:flex;gap:16px;justify-content:center;font-size:11.5px;color:var(--muted);margin:4px 0 10px}
+  .sblegend .mk{margin-right:3px}
+
+  /* advice family tree */
+  .tree{margin:6px 0 14px}
+  .treetop{background:#14161c;border-radius:16px;padding:16px;text-align:center;color:#fff}
+  .treetop .pixframe{margin:0 auto 8px}
+  .treename{font-family:'Sora';font-weight:800;font-size:14px}
+  .treesay{font-size:12px;color:var(--ink2);line-height:1.45;margin-top:5px}
+  .treetop .treesay{color:#e8d8ad}
+  .treeline{width:2px;height:18px;background:var(--line);margin:0 auto}
+  .treekids{display:flex;gap:11px;justify-content:center}
+  .treekids.one{max-width:280px;margin:0 auto}
+  .treekid{flex:1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 12px;text-align:center;box-shadow:var(--shadow);position:relative}
+  .treekid .miniframe{margin:0 auto 7px;width:42px}
+  .kidconn{position:absolute;top:-18px;left:50%;width:2px;height:18px;background:var(--line)}
+
+  /* trade venues */
+  .venue{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;box-shadow:var(--shadow);margin-bottom:12px;cursor:pointer}
+  .vtop{display:flex;align-items:center;gap:12px}
+  .mplogo{width:46px;height:46px;border-radius:13px;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:12px;flex-shrink:0}
+  .vname{font-family:'Sora';font-weight:800;font-size:14px}.vsub{font-size:11.5px;color:var(--muted)}
+  .vamt{font-family:'Sora';font-weight:800;font-size:15px;margin-left:auto}
+  .oscar{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--ink2);background:var(--bg);border-radius:10px;padding:9px 11px;margin-top:11px;line-height:1.4}
+  .oscardot{width:8px;height:8px;border-radius:50%;background:#1f9d57;flex-shrink:0;box-shadow:0 0 0 0 rgba(31,157,87,.5);animation:lp 1.8s infinite}
+  @keyframes lp{0%{box-shadow:0 0 0 0 rgba(31,157,87,.5)}70%{box-shadow:0 0 0 7px rgba(31,157,87,0)}100%{box-shadow:0 0 0 0 rgba(31,157,87,0)}}
+  .miniprog{text-align:left}.mptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+  .mptag{background:#eef3ff;color:#2f6fd6;font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 9px;border-radius:7px}
+  .miniprog .applogo{margin:0 0 12px}
+  .miniorder{background:#f6f7f9;border-radius:12px;padding:6px 13px;margin:10px 0 14px}
+  .orow{display:flex;align-items:center;gap:9px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+  .orow:last-child{border-bottom:none}.oname{flex:1;color:var(--ink2)}.oamt{font-family:'Sora';font-weight:700;color:var(--ink)}
+  .orow.total{border-top:2px solid var(--line);margin-top:4px;padding-top:10px}
+
+  /* sandbox canvas */
+  .coachstrip{cursor:pointer}
+  .coachstrip .cav{width:34px;height:34px;border-radius:10px;overflow:hidden;flex-shrink:0;box-shadow:0 2px 8px rgba(124,58,237,.25)}
+  .coachcta{font-size:11px;font-weight:700;color:#7c3aed;margin-top:5px}
+  .sandcanvas{background:repeating-linear-gradient(45deg,#fbf7ee,#fbf7ee 10px,#f7f1e4 10px,#f7f1e4 20px);border:2px dashed #e2d6b8;border-radius:18px;padding:12px;min-height:90px;display:flex;flex-direction:column;gap:9px}
+  .canvasempty{text-align:center;color:#a98e52;font-size:12.5px;padding:24px 8px}
+  .stile-row{display:flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);border-radius:13px;padding:9px 10px;box-shadow:0 2px 8px rgba(18,20,28,.06)}
+  .trow-mid{flex:1;min-width:0;cursor:pointer}
+  .amtctl{display:flex;align-items:center;flex-shrink:0}
+  .amtbox{display:flex;align-items:center;gap:2px;background:#fff;border:1.5px solid var(--line);border-radius:9px;padding:6px 9px}
+  .amtbox:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(236,28,36,.1)}
+  .amtbox span{font-size:10px;color:var(--muted);font-weight:700}
+  .amtin{width:62px;border:none;background:transparent;font-family:'Sora';font-weight:800;font-size:13px;color:var(--ink);text-align:right;padding:0;outline:none}
+  .tilex2{width:24px;height:24px;border-radius:50%;background:#f1f2f4;color:#8b9098;border:none;font-size:15px;line-height:1;cursor:pointer;flex-shrink:0}
+  .stile{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 10px 11px;text-align:center;box-shadow:0 3px 10px rgba(18,20,28,.08);cursor:pointer}
+  .tilex{position:absolute;top:-7px;right:-7px;width:23px;height:23px;border-radius:50%;background:#14161b;color:#fff;border:2px solid #fff;font-size:13px;line-height:1;cursor:pointer;z-index:2}
+  .tname{font-size:11.5px;font-weight:700;color:var(--ink);line-height:1.25}
+  .ttk{font-size:10px;color:var(--muted);margin-top:2px}
+  .sandrail{display:flex;flex-direction:column;gap:8px;max-height:300px;overflow-y:auto;padding:2px}
+  .ptile{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 11px;cursor:pointer;transition:.12s}
+  .ptile:active{transform:scale(.98)}
+  .tileadd{font-size:18px;font-weight:800;color:var(--red);flex-shrink:0}
+
+  /* chat modal */
+  .chatwrap{text-align:left}
+  .chathead{display:flex;align-items:center;gap:11px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
+  .cav{width:34px;height:34px;border-radius:10px;overflow:hidden;flex-shrink:0}
+  .cav.lg{width:46px;height:46px;border-radius:12px}
+  .chn{font-family:'Sora';font-weight:800;font-size:15px}
+  .chs{font-size:11.5px;color:var(--muted)}
+  .chatbody{max-height:46vh;overflow-y:auto;display:flex;flex-direction:column;gap:10px;padding:2px 0}
+  .cmsg{display:flex;gap:8px;align-items:flex-end}
+  .cmsg.me{flex-direction:row-reverse}
+  .cmsg .cav{width:28px;height:28px;border-radius:8px}
+  .cbub{font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px;max-width:78%}
+  .cbub.ai{background:var(--bg);color:var(--ink);border-bottom-left-radius:4px}
+  .cbub.me{background:var(--red);color:#fff;border-bottom-right-radius:4px}
+  .chatchips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px}
+  .chatinput{display:flex;align-items:center;gap:8px;margin-top:10px;background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:5px 5px 5px 15px}
+  .chatinput:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(236,28,36,.1)}
+  .chatintxt{flex:1;border:none;outline:none;background:transparent;font-family:'Inter';font-size:14px;color:var(--ink);padding:7px 0}
+  .chatsend{width:36px;height:36px;border-radius:50%;border:none;background:var(--red);color:#fff;font-size:17px;font-weight:800;cursor:pointer;flex-shrink:0;line-height:1}
+  .chatsend:active{transform:scale(.94)}
+  .cchip{background:#fff;border:1.5px solid var(--line);border-radius:18px;padding:8px 13px;font-size:12.5px;font-weight:600;color:var(--ink2);cursor:pointer;transition:.12s}
+  .cchip:active{transform:scale(.97);border-color:var(--red);color:var(--red)}
+
+  /* news feed */
+  .newswrap{display:flex;flex-direction:column;gap:8px}
+  .newscard{display:flex;align-items:center;gap:11px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--line);border-radius:13px;padding:11px 13px;box-shadow:var(--shadow)}
+  .newscard.up{border-left-color:#1f9d57}.newscard.dn{border-left-color:#ec1c24}
+  .newsdot{width:26px;height:26px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0}
+  .newscard.up .newsdot{background:#e7f6ee;color:#1f9d57}.newscard.dn .newsdot{background:#fdecec;color:#ec1c24}
+  .newsh{font-size:12.5px;font-weight:700;color:var(--ink);line-height:1.3}
+  .newsmeta{font-size:11px;color:var(--muted);margin-top:1px}
+
+  .pbadge{display:inline-block;font-size:9px;font-weight:800;letter-spacing:.03em;padding:2px 6px;border-radius:6px;vertical-align:1px;white-space:nowrap}
+  .pbadge.ai{background:#fef3c7;color:#a16207}
+  .pbadge.ed{background:#e0edff;color:#2563eb}
+  .stile .pbadge{display:inline-block;margin-top:5px}
+  .sandintro{font-size:12px;color:var(--ink2);line-height:1.5;background:#fbf7ee;border:1px solid #efe6d2;border-radius:12px;padding:11px 13px;margin-bottom:14px}
+  .riskseg{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:9px}
+  .riskpill{flex:1 1 auto;min-width:90px;text-align:center;padding:9px 8px;border:1.5px solid var(--line);border-radius:11px;background:#fff;font-size:12.5px;font-weight:700;color:var(--ink2);cursor:pointer;transition:.15s}
+  .riskpill.on{background:var(--red);border-color:var(--red);color:#fff;box-shadow:0 4px 12px rgba(236,28,36,.22)}
+  .rcadjnote{font-size:11.5px;color:var(--muted);line-height:1.45;margin-bottom:14px}
+  .riskadj{margin-top:14px;text-align:center}
+  .riskadj-link{display:inline-block;font-size:12.5px;color:var(--muted);font-weight:600;cursor:pointer;padding:6px 4px;text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--line)}
+  .riskadj-link span{font-size:10px;text-decoration:none;display:inline-block;margin-left:2px}
+  .assessrow{display:flex;justify-content:space-between;font-size:13px}
+  .assessrow span{color:var(--ink2)}
+  .recorisk{display:flex;justify-content:space-around;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+  .recorisk>div{display:flex;flex-direction:column;align-items:center;gap:2px}
+  .recorisk span{font-size:11px;color:var(--muted)}
+  .recorisk b{font-family:'Sora';font-size:14px}
+
+  .acctcard{background:#fff;border:1px solid var(--line);border-radius:15px;padding:4px 14px;box-shadow:var(--shadow)}
+  .acctrow{display:flex;align-items:center;gap:11px;padding:11px 0}
+  .acctic{width:38px;height:38px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Sora';font-weight:800;font-size:11px;flex-shrink:0}
+  .acctlbl{font-size:10.5px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+  .acctname{font-size:13px;font-weight:700;color:var(--ink);margin-top:1px}
+  .acctav{text-align:right;font-family:'Sora';font-weight:800;font-size:13px;color:var(--ink);flex-shrink:0}
+  .acctav span{display:block;font-family:'Inter';font-weight:500;font-size:10px;color:var(--muted)}
+  .acctgo{font-size:12px;font-weight:700;color:var(--red);cursor:pointer;flex-shrink:0}
+  .acctready{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#1f9d57;flex-shrink:0}
+  .acctready .rdot{width:7px;height:7px;border-radius:50%;background:#1f9d57;display:inline-block}
+  .okcheck{width:54px;height:54px;border-radius:50%;background:#e7f8ef;color:#1f9d57;font-size:27px;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+  .acctdiv{height:1px;background:var(--line);margin:0 -14px 0 49px}
+  .ordgroup{background:#fff;border:1px solid var(--line);border-radius:14px;padding:11px 13px;margin-bottom:9px;box-shadow:var(--shadow)}
+  .ordhead{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:800;color:var(--ink);padding-bottom:9px;margin-bottom:7px;border-bottom:1px solid var(--line)}
+  .ordvia{font-size:10.5px;font-weight:600;color:var(--muted)}
+  .ordsum{margin-left:auto;font-family:'Sora';font-weight:800}
+  .ordrow{display:flex;align-items:center;gap:10px;padding:6px 0}
+  .ordamt{font-family:'Sora';font-weight:700;font-size:13px;color:var(--ink);flex-shrink:0}
+  .ordtotal{display:flex;justify-content:space-between;align-items:center;background:#14161c;color:#fff;border-radius:13px;padding:14px 16px;margin:4px 0 14px}
+  .ordtotal span{font-size:13px;opacity:.8}.ordtotal b{font-family:'Sora';font-size:18px}
+  .ordtotal2{background:#14161c;color:#fff;border-radius:13px;padding:13px 16px;margin:4px 0 9px}
+  .ordtotal2 .otr{display:flex;justify-content:space-between;align-items:center}
+  .ordtotal2 .otr.sub{margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.12)}
+  .ordtotal2 .otr span{font-size:13px;opacity:.8}
+  .ordtotal2 .otr b{font-family:'Sora';font-size:18px}
+  .ordtotal2 .otr.sub b{font-size:14px;opacity:.92}
+  .plannote{font-size:11.5px;color:var(--muted);line-height:1.5;margin-bottom:14px}
+  .simctl{display:flex;align-items:center;gap:6px;margin-top:12px;flex-wrap:wrap}
+  .simlbl{font-size:11px;color:rgba(255,255,255,.55);font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-right:1px}
+  .simbtn{flex:1 1 0;min-width:62px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);color:#fff;border-radius:9px;padding:9px 6px;font-size:12px;font-weight:700;cursor:pointer}
+  .simbtn:active{background:rgba(255,255,255,.26)}
+  .simbtn.reset{flex:0 0 auto;background:transparent;border-color:transparent;color:rgba(255,255,255,.6)}
+
+  .sandproj{border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:16px;background:#fff;box-shadow:var(--shadow)}
+  .sandproj.ok{border-color:#bfe6cd;background:linear-gradient(180deg,#f5fbf7,#fff)}
+  .sandproj.warn{border-color:#f3d8ad;background:linear-gradient(180deg,#fffaf2,#fff)}
+  .spjtop{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:6px}
+  .spjlbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .spjval{font-family:'Sora';font-weight:800;font-size:19px;color:var(--ink)}
+  .spjval span{font-size:11px;font-weight:600;color:var(--muted)}
+  .spjdelta{display:inline-block;font-size:11px;font-weight:800;margin-top:3px}
+  .spjdelta.dn{color:#ec1c24}.spjdelta.up{color:#1f9d57}.spjdelta.flat{color:#7c5cf0}
+  .spjpill{font-size:11px;font-weight:800;padding:5px 11px;border-radius:20px;flex-shrink:0}
+  .spjpill.ok{background:#e7f6ee;color:#1f9d57}.spjpill.warn{background:#fde7d3;color:#c47712}
+  .spjchart{margin:2px 0 8px}
+  .spjmsg{font-size:12px;line-height:1.45;color:var(--ink2)}
+
+  .hsumwrap{display:flex;flex-direction:column;gap:10px}
+  .hsumg{border:1px solid var(--line);border-radius:13px;padding:11px 13px;background:#fff}
+  .hsumh{display:flex;align-items:center;gap:8px;font-weight:800;font-size:13px;font-family:'Sora';margin-bottom:6px}
+  .hsumw{margin-left:auto;color:var(--muted);font-size:12px;font-weight:700}
+  .hsumr{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:4px 0;font-size:12.5px}
+  .hsumn{color:var(--ink2);min-width:0}
+  .hsumg2{color:#1f9d57;font-weight:700;flex-shrink:0}
+  .hsumhint{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:10px;background:var(--bg);border-radius:11px;padding:10px 12px}
 </style>
 
 <div class="demobar">
@@ -508,8 +731,8 @@
 
 <script>
 /* ============ state ============ */
-const ORDER=['login','home','team','goals','risk','link','analyze','reco','sandbox','choose','rm','paper','done','pilot','review'];
-const NAMES={login:'Log in',home:'Home',team:'Your AI team',goals:'Your goals',risk:'Risk comfort',link:'Link portfolios',analyze:'Building your plan',reco:'Recommendation',sandbox:'Adjust plan',choose:'Ready to act',rm:'Relationship Manager',paper:'Paper trading',done:'Invest',pilot:'WealthPilot home',review:'Quarterly review'};
+const ORDER=['login','home','team','goals','risk','analyze','reco','portfolio','projection','advice','trade','pilot','review'];
+const NAMES={login:'Log in',home:'Home',team:'Your AI team',goals:'Your goals',risk:'Risk comfort',analyze:'Building your plan',reco:'Your plan',orchestrate:'Orchestrated view',portfolio:'Your portfolio',tune:'Edit basket',projection:'Projection',advice:'Final advice',trade:'Trade',pilot:'WealthPilot home',review:'Quarterly review'};
 const KEYS4=['FI','Funds','Cash','Alt'];
 const BK={FI:{name:'Fixed Income',color:'var(--fi)',hex:'#2f6fd6',sub:'Stability & income'},
   Funds:{name:'Equities',color:'var(--funds)',hex:'#ec1c24',sub:'Growth engine'},
@@ -545,10 +768,10 @@ const AGENT_DETAIL={
     expertise:"We help you grow your savings steadily, taking more growth opportunities early on and moving to safer options as your purchase date gets closer.",
     insights:[
       {label:"Your home loan interest rate",value:"2.1%",note:"This is lower than the ~3.4% return needed to reach your goal on time."},
-      {label:"Your savings timeline",value:"6 years",note:"You still have enough time, but you may need to save about $320 more each month to stay on track."},
-      {label:"How your money is currently allocated",value:"42%",note:"This is quite high for your timeline. You could consider moving about 20% into low-risk investments (like short-term bonds) to help your money grow."}
+      {label:"Your savings timeline",value:"6 years",note:"You still have enough time, but you may need to save about S$320 more each month to stay on track."},
+      {label:"Spare cash left each month",value:"~35%",note:"About a third of your salary sits idle after expenses — putting some of it to work could speed up your home goal."}
     ],
-    consideration:"At your current rate of 2.1%, and with a goal of $400,000, you may fall short bu about $38,000 by 2030 if nothing changes",
+    consideration:"At your current savings pace, you may fall short of your S$400,000 goal by around S$38,000 by 2030 if nothing changes.",
     riskTag:"Moderate",riskColor:"#e08600"
   },
   retire:{
@@ -567,17 +790,17 @@ const AGENT_DETAIL={
     insights:[
       {label:"Your returns this year",value:"+3.2%",note:"This is lower than the global market average of about 7.1%."},
       {label:"Portfolio risk level",value:"Low",note:"You're currently taking less risk than you could, which may limit your potential returns."},
-      {label:"Alternative investments",value:"0%",note:"Adding some (around 15-20%) could help improve your overall returns."}
+      {label:"Alternative investments",value:"8%",note:"Lifting this toward 15-20% could diversify your growth and improve risk-adjusted returns."}
     ],
-    consideration:"Your portfolio is currently underperforming. Since you’re able to take on more risk, shifting towards growth-focused investments could help close the gap and improve your results over time.",
+    consideration:"Your portfolio is underperforming the market. Since you’re able to take on more risk, shifting towards growth-focused investments could help close the gap and improve your results over time.",
     riskTag:"High",
     riskColor:"#ec1c24"
   },
   income:{
     expertise:"We focus on investments that can pay you regular income, like dividends and interest.",
     insights:[
-      {label:"Monthly passive income",value:"$0 from portfolio",note:"Your investments are not generating any regular income right now."},
-      {label:"Monthly disposable savings",value:"$1,200",note:"You could put part of this into income-generating investments."},
+      {label:"Monthly passive income",value:"S$0 from portfolio",note:"Your investments are not generating any regular income right now."},
+      {label:"Monthly disposable savings",value:"S$1,200",note:"You could put part of this into income-generating investments."},
       {label:"REIT investments",value:"0%",note:"Singapore REITs typically offer around 5-7% returns and can provide steady income."}
     ],
     consideration:"Right now, your extra cash isn’t working for you. By investing even part of it, you could start building a steady stream of monthly income over the next few years.",
@@ -725,24 +948,44 @@ let PRODUCTS=[
   {id:'s9',bucket:null,inShelf:true,name:'abrdn Asian Bond Fund'},
   {id:'s10',bucket:null,inShelf:true,name:'LionGlobal SGD Enhanced Liquidity'},
   {id:'s11',bucket:null,inShelf:true,name:'Syfe REIT+ (SG REITs)',why:'income from property'},
-  {id:'s12',bucket:null,inShelf:true,name:'iShares Physical Gold ETC'}
+  {id:'s12',bucket:null,inShelf:true,name:'iShares Physical Gold ETC'},
+  // — expanded shelf: realistic ETFs across the four classes —
+  {id:'s13',bucket:null,inShelf:true,name:'iShares Dow Jones Global Titans 50 ETF (EXI2)',why:'mega-cap global core'},
+  {id:'s14',bucket:null,inShelf:true,name:'iShares Edge MSCI World Quality Factor ETF (IS3Q)',why:'quality tilt'},
+  {id:'s15',bucket:null,inShelf:true,name:'Xtrackers MSCI World Information Technology ETF (XDWT)',why:'matches your tech spend'},
+  {id:'s16',bucket:null,inShelf:true,name:'Xtrackers MSCI USA Consumer Discretionary ETF (XUCD)'},
+  {id:'s17',bucket:null,inShelf:true,name:'iShares EURO STOXX 50 ETF (EXW1)',why:'Europe blue-chips'},
+  {id:'s18',bucket:null,inShelf:true,name:'Xtrackers MSCI Japan ETF (XDJP)'},
+  {id:'s19',bucket:null,inShelf:true,name:'iShares MSCI Emerging Markets ETF (IEEM)',why:'EM growth'},
+  {id:'s20',bucket:null,inShelf:true,name:'iShares Core MSCI World ETF (IWDA)',why:'one-fund global'},
+  {id:'s21',bucket:null,inShelf:true,name:'iShares Global Govt Bond ETF (IGLO)',why:'defensive ballast'},
+  {id:'s22',bucket:null,inShelf:true,name:'iShares USD Treasury 7-10yr ETF (IBTM)'},
+  {id:'s23',bucket:null,inShelf:true,name:'Xtrackers USD Corporate Bond ETF (XDGU)',why:'investment-grade yield'},
+  {id:'s24',bucket:null,inShelf:true,name:'iShares JP Morgan EM Local Govt Bond ETF (IEML)'},
+  {id:'s25',bucket:null,inShelf:true,name:'Cash Fund USD (LionGlobal)',why:'USD liquidity'},
+  {id:'s26',bucket:null,inShelf:true,name:'Fullerton USD Cash Fund',why:'USD yield on idle cash'},
+  {id:'s27',bucket:null,inShelf:true,name:'iShares Global Infrastructure ETF (INFR)',why:'inflation-linked income'},
+  {id:'s28',bucket:null,inShelf:true,name:'iShares Developed Markets Property ETF (IWDP)',why:'global REITs'}
 ];
-const SHELF_BUCKET={s1:'Funds',s2:'Cash',s3:'FI',s4:'Alt',s5:'Funds',s6:'Funds',s7:'Funds',s8:'Funds',s9:'FI',s10:'Cash',s11:'Alt',s12:'Alt'};
+const SHELF_BUCKET={s1:'Funds',s2:'Cash',s3:'FI',s4:'Alt',s5:'Funds',s6:'Funds',s7:'Funds',s8:'Funds',s9:'FI',s10:'Cash',s11:'Alt',s12:'Alt',
+  s13:'Funds',s14:'Funds',s15:'Funds',s16:'Funds',s17:'Funds',s18:'Funds',s19:'Funds',s20:'Funds',
+  s21:'FI',s22:'FI',s23:'FI',s24:'FI',s25:'Cash',s26:'Cash',s27:'Alt',s28:'Alt'};
 /* every product belongs to exactly one asset class */
 PRODUCTS.forEach(p=>{p.cls = p.inShelf ? SHELF_BUCKET[p.id] : p.bucket; p.amt = 0; p.rec = 0;});
-const POOL=120000; // investable amount the AI allocates across products
+const POOL=96000; // matches BANK_KNOWN.investableAssets — you can only invest what you have
 
 const state={
-  agents:['home','grow'],
+  agents:[],
   goalLabel:'home goal', target:400000, years:6, rmApproved:false, invested:false,
   pilot:{idle:12400, deployed:false, drift:58, rebalanced:false},
   proposals:[{id:'pr1',on:true},{id:'pr2',on:false}],
-  qa:{}, regions:['Singapore'], expand:{},
+  qa:{}, regions:['Singapore'], expand:{}, riskOverride:null,
   providers:JSON.parse(JSON.stringify(PROVIDERS)),
   buckets:{FI:25,Funds:40,Cash:15,Alt:20},
-  invest:120000, monthly:2500,
+  activeBucket:'FI',
+  invest:96000, monthly:2500,
   chart:'area',
-  paper:{started:false,step:0,series:[],base:0,amount:120000},
+  paper:{started:false,step:0,series:[],base:0,amount:96000},
   drag:null
 };
 const REGIONS=['Singapore','United States','Asia ex-Japan','Europe','Emerging Markets','Global / broad'];
@@ -789,7 +1032,7 @@ const AGENT_Q={
         {id:'h_msave',label:'How much can you save monthly toward it?',unit:'S$',def:2500,money:1}],
   retire:[{id:'r_rage',label:'What age would you like to retire?',unit:'yrs',def:62},
         {id:'r_ret',label:'What monthly spend do you expect in retirement?',unit:'S$',def:3500,money:1}],
-  grow:[{id:'g_amt',label:'How much would you like to invest now?',unit:'S$',def:120000,money:1},
+  grow:[{id:'g_amt',label:'How much would you like to invest now?',unit:'S$',def:96000,money:1},
         {id:'g_hor',label:'What is your investment horizon?',unit:'yrs',def:8,sets:'years'},
         {id:'g_tgt',label:'What is your target portfolio value?',unit:'S$',def:300000,money:1,sets:'target'}],
   income:[{id:'i_inc',label:'How much monthly income would you like?',unit:'S$',def:1200,money:1},
@@ -806,9 +1049,30 @@ const RISK_DESC=[
   "You're focused on maximising long-term growth and can ride out large short-term swings."
 ];
 const PNAME={home:'Property',retire:'Retirement',grow:'Growth',income:'Income'};
-function riskIndex(){const score=RISK_Q.reduce((s,q)=>s+(state.qa[q.id]??3),0);// 6..30
-  return score<=11?0:score<=16?1:score<=21?2:score<=26?3:4;}
+function riskIndex(){
+  if(state.riskOverride!=null)return state.riskOverride;
+  const app=appetiteScore();                 // avg risk appetite of chosen agents (1..3)
+  const yrs=horizon()||state.years||6;
+  let idx = app<1.5?0 : app<2.0?1 : app<2.5?2 : app<2.9?3 : 4;
+  if(yrs>=12 && idx<4) idx++;                 // long runway → can take a bit more risk
+  else if(yrs<=3 && idx>0) idx--;             // very short → dial back
+  return Math.max(0,Math.min(4,idx));
+}
 function riskProfile(){return RISK_WORDS[riskIndex()];}
+function applyRiskTilt(){const d=riskIndex()-2;if(!d)return; // Balanced(2) = neutral
+  const growth=['Funds','Alt'],defensive=['FI','Cash'];
+  const step=Math.abs(d)*6,from=d>0?defensive:growth,to=d>0?growth:defensive;
+  let pool=0;from.forEach(k=>{const take=Math.min(state.buckets[k],Math.round(step/from.length));state.buckets[k]-=take;pool+=take;});
+  to.forEach(k=>{state.buckets[k]+=Math.round(pool/to.length);});
+  let tot=KEYS4.reduce((s,k)=>s+state.buckets[k],0);if(tot!==100){const big=KEYS4.reduce((a,b)=>state.buckets[b]>state.buckets[a]?b:a,'FI');state.buckets[big]+=100-tot;}}
+function setRisk(i){state.riskOverride=i;state.riskAssessed=RISK_WORDS[i];
+  const sel=AGENTS.filter(a=>state.agents.includes(a.id));if(sel.length){
+    const sum={FI:0,Funds:0,Cash:0,Alt:0};sel.forEach(a=>KEYS4.forEach(k=>sum[k]+=a.lean[k]));
+    let r={},tot=0;KEYS4.forEach(k=>{r[k]=Math.round(sum[k]/sel.length);tot+=r[k];});
+    if(tot!==100){const big=KEYS4.reduce((a,b)=>r[b]>r[a]?b:a,'FI');r[big]+=100-tot;}
+    state.buckets=r;applyRiskTilt();recommendAmounts();recalcBuckets();}
+  state._aiProj=null;keepScroll(render);}
+function toggleRiskAdj(){state.expand.riskAdj=!state.expand.riskAdj;keepScroll(render);}
 function riskProfileLevel(){return riskIndex()+1;}// 1..5
 function riskComfort(){const i=riskIndex();const word=RISK_WORDS[i];const pn=PNAME[state.agents[0]]||'Balanced';
   const portfolio=(word===pn?word:`${word} ${pn}`)+' Portfolio';
@@ -827,7 +1091,7 @@ function noticedDynamic(a){
     const neededMonthly=monthsLeft>0?Math.round(gap/monthsLeft):0;
     const shortfall=neededMonthly-msave;
     return {
-      t:'S$'+gap.toLocaleString()+' still needed for your '+money(price).replace('S$','')+' target',
+      t:'S$'+gap.toLocaleString()+' still needed for your '+money(price)+' target',
       d:shortfall>0
         ? 'At '+money(msave)+'/mo you\'re short by ~'+money(shortfall)+'/mo to hit this in '+when+' yrs — I built in growth assets to help close that gap.'
         : 'Your '+money(msave)+'/mo pace covers this with room to spare — I kept a safety-first glidepath since you\'re ahead of schedule.'
@@ -845,7 +1109,7 @@ function noticedDynamic(a){
     };
   }
   if(a.id==='grow'){
-    const amt=qa('g_amt',120000),hor=qa('g_hor',8),tgt=qa('g_tgt',300000);
+    const amt=qa('g_amt',96000),hor=qa('g_hor',8),tgt=qa('g_tgt',300000);
     const growthNeeded=amt>0?Math.round(((tgt/amt)**(1/hor)-1)*1000)/10:0;
     return {
       t:'Need ~'+growthNeeded+'%/yr to grow '+money(amt)+' into '+money(tgt)+' in '+hor+' yrs',
@@ -873,6 +1137,7 @@ function applyAgents(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));i
   state.target=Math.round(sel.reduce((s,a)=>s+a.target,0)/sel.length/25000)*25000;
   state.years=Math.round(sel.reduce((s,a)=>s+a.years,0)/sel.length);
   state.goalLabel=sel[0].goal;
+  applyRiskTilt();
   recommendAmounts();recalcBuckets();}
 /* split POOL across each class's active products by the recommended mix */
 function recommendAmounts(){KEYS4.forEach(k=>{
@@ -885,7 +1150,8 @@ function recommendAmounts(){KEYS4.forEach(k=>{
 });}
 function bucketVal(k){return PRODUCTS.filter(p=>p.bucket===k).reduce((s,p)=>s+(p.amt||0),0);}
 function totalVal(){return PRODUCTS.filter(p=>p.bucket).reduce((s,p)=>s+(p.amt||0),0);}
-function recalcBuckets(){const tot=totalVal()||1;KEYS4.forEach(k=>{state.buckets[k]=Math.round(bucketVal(k)/tot*100);});
+function recalcBuckets(){const tot=totalVal();if(!tot){KEYS4.forEach(k=>state.buckets[k]=0);state.invest=0;return;}
+  KEYS4.forEach(k=>{state.buckets[k]=Math.round(bucketVal(k)/tot*100);});
   let s=KEYS4.reduce((a,k)=>a+state.buckets[k],0);if(s!==100){const big=KEYS4.reduce((a,b)=>state.buckets[b]>state.buckets[a]?b:a,'FI');state.buckets[big]+=100-s;}
   state.invest=totalVal();}
 function goalLabel(){return state.goalLabel;}
@@ -992,10 +1258,19 @@ function renderQuestion(box,agent,field){
   row.className='chat-input-row';
   row.id='inputrow-'+field.id;
   row.innerHTML='<div class="qinwrap" style="border-color:'+hexToRgba(c,.35)+'">'+(field.money?'<span class="qpfx" style="color:'+c+'">S$</span>':'')+
-    '<input class="qin" id="qin-'+field.id+'" inputmode="numeric" placeholder="'+(field.money?field.def.toLocaleString():field.def)+'" style="caret-color:'+c+'">'+
+    '<input class="qin" id="qin-'+field.id+'" inputmode="numeric" placeholder="Type your own…" style="caret-color:'+c+'">'+
     (field.unit&&!field.money?'<span class="qsfx">'+field.unit+'</span>':'')+'</div>'+
     '<button class="chat-send" style="background:'+c+'" onclick="submitChatAnswer(\''+field.id+'\')">→</button>';
   box.appendChild(row);
+
+  const sval=field.money?'S$'+field.def.toLocaleString():field.def+(field.unit?' '+field.unit:'');
+  const sug=document.createElement('div');
+  sug.className='chat-suggest';
+  sug.id='suggest-'+field.id;
+  sug.innerHTML='<button class="sugchip" style="border-color:'+hexToRgba(c,.45)+';color:'+c+'" onclick="useSuggest(\''+field.id+'\','+field.def+')"><span class="sugspark">✦</span> '+sval+'</button>'+
+    '<span class="sugnote">Suggested from what OCBC already knows about you — tap to use, or type your own</span>';
+  box.appendChild(sug);
+
   chatScroll();
   const inputEl=document.getElementById('qin-'+field.id);
   if(inputEl){
@@ -1003,6 +1278,7 @@ function renderQuestion(box,agent,field){
     inputEl.addEventListener('keydown',e=>{if(e.key==='Enter')submitChatAnswer(field.id);});
   }
 }
+function useSuggest(fieldId,val){const inputEl=document.getElementById('qin-'+fieldId);if(inputEl)inputEl.value=val;submitChatAnswer(fieldId);}
 function submitChatAnswer(fieldId){
   const turns=state._turns||[];
   const i=state._chatStep||0;
@@ -1017,6 +1293,8 @@ function submitChatAnswer(fieldId){
 
   const row=document.getElementById('inputrow-'+fieldId);
   if(row)row.remove();
+  const sug=document.getElementById('suggest-'+fieldId);
+  if(sug)sug.remove();
   const box=document.getElementById('goalChat');
   const uc=turn.agent.color||'#ec1c24';
   const userBub=document.createElement('div');
@@ -1034,8 +1312,10 @@ function saveGoals(){const primary=state.agents[0];
     state.years=Math.max(1,rage-age);state.target=Math.round(ret*12*25/25000)*25000;state.goalLabel='retirement';}
   else{(AGENT_Q[primary]||[]).forEach(f=>{if(f.sets==='target')state.target=qVal(f);if(f.sets==='years')state.years=qVal(f);});
     const a=AGENTS.find(x=>x.id===primary);if(a)state.goalLabel=a.goal;}
+  applyAgents();recommendAmounts();recalcBuckets();
+  state._aiProj=sandProjValue();state._aiRet=pRetEff();
   go('risk');}
-function saveRisk(){state.riskAssessed=riskProfile();go('link');}
+function saveRisk(){state.riskAssessed=riskProfile();go('analyze');}
 applyAgents();
 let cur='login';
 
@@ -1050,10 +1330,12 @@ function confidence(){const linked=state.providers.filter(p=>p.linked).length;re
 function linkedNet(){return state.providers.filter(p=>p.linked).reduce((s,p)=>s+p.val,0);}
 function bTotal(){return KEYS4.reduce((s,k)=>s+state.buckets[k],0);}
 function pRet(){return KEYS4.reduce((s,k)=>s+state.buckets[k]/100*RET[k],0);}
+function bucketRecCount(k){return Math.max(1,PRODUCTS.filter(p=>p.cls===k&&p.ow).length);}
+function pRetEff(){const tot=totalVal();if(!tot)return RET.Cash;return KEYS4.reduce((s,k)=>s+(bucketVal(k)/tot)*RET[k],0);}
 function pVol(){return KEYS4.reduce((s,k)=>s+state.buckets[k]/100*VOL[k],0);}
 function horizon(){return state.years;}
 function targetVal(){return state.target;}
-function projValue(yrs){const r=pRet(),rm=r/12,n=(yrs||horizon())*12;
+function projValue(yrs){const r=pRetEff(),rm=r/12,n=(yrs||horizon())*12;
   let v=state.invest*Math.pow(1+rm,n);
   if(state.monthly>0)v+=state.monthly*((Math.pow(1+rm,n)-1)/rm);return Math.round(v);}
 function goalPct(){return Math.round(projValue()/targetVal()*100);}
@@ -1074,40 +1356,68 @@ function donutSVG(size,clickable){const r=44,c=2*Math.PI*r;let off=0,segs='';
     segs+=`<circle cx="60" cy="60" r="${r}" fill="none" stroke="${BK[k].hex}" stroke-width="13" stroke-dasharray="${len} ${c-len}" stroke-dashoffset="${-off}" transform="rotate(-90 60 60)" style="transition:stroke-dasharray .5s,stroke-dashoffset .5s"/>`;off+=len;}
   return `<svg width="${size}" height="${size}" viewBox="0 0 120 120">${segs}<circle cx="60" cy="60" r="31" fill="#fff"/>
     <text x="60" y="56" text-anchor="middle" font-family="Sora" font-weight="800" font-size="13" fill="#14161b">S$${Math.round(totalVal()/1000)}k</text>
-    <text x="60" y="70" text-anchor="middle" font-family="Inter" font-size="8" fill="#737984">invested</text></svg>`;}
+    <text x="60" y="70" text-anchor="middle" font-family="Inter" font-size="8" fill="#737984">to invest</text></svg>`;}
+
+function pieSVG(size){
+  const cx=60,cy=60,r=52;
+  let angle=-90,paths='';
+  for(const k of KEYS4){
+    const pct=state.buckets[k];
+    if(pct<=0)continue;
+    const startAngle=angle;
+    const sweep=pct/100*360;
+    const endAngle=startAngle+sweep;
+    const toRad=d=>d*Math.PI/180;
+    const x1=cx+r*Math.cos(toRad(startAngle)), y1=cy+r*Math.sin(toRad(startAngle));
+    const x2=cx+r*Math.cos(toRad(endAngle)), y2=cy+r*Math.sin(toRad(endAngle));
+    const largeArc=sweep>180?1:0;
+    // full circle edge case
+    if(pct>=99.99){
+      paths+=`<circle cx="${cx}" cy="${cy}" r="${r}" fill="${BK[k].hex}"/>`;
+    }else{
+      paths+=`<path d="M${cx} ${cy} L${x1.toFixed(2)} ${y1.toFixed(2)} A${r} ${r} 0 ${largeArc} 1 ${x2.toFixed(2)} ${y2.toFixed(2)} Z" fill="${BK[k].hex}" stroke="#fff" stroke-width="1.5"/>`;
+    }
+    angle=endAngle;
+  }
+  const hole=Math.round(totalVal()/1000);
+  paths+=`<circle cx="${cx}" cy="${cy}" r="30" fill="#fff"/>`+
+    `<text x="${cx}" y="${cy-2}" text-anchor="middle" font-family="Sora" font-weight="800" font-size="14" fill="#14161b">S$${hole}k</text>`+
+    `<text x="${cx}" y="${cy+12}" text-anchor="middle" font-family="Inter" font-size="8" fill="#737984">to invest</text>`;
+  return `<svg width="${size}" height="${size}" viewBox="0 0 120 120">${paths}</svg>`;
+}
 
 function projChart(){
-  const yrs=horizon(), r=pRet(),rm=r/12,vol=pVol();
-  const W=320,H=150,pad=10,n=yrs*12;
-  const pts=[];for(let i=0;i<=n;i++){let v=state.invest*Math.pow(1+rm,i)+(state.monthly>0?state.monthly*((Math.pow(1+rm,i)-1)/rm):0);pts.push(v);}
-  const target=targetVal(), maxV=Math.max(target*1.05,pts[n]*1.08);
-  const X=i=>pad+i/n*(W-2*pad), Y=v=>H-pad-v/maxV*(H-2*pad);
+  const yrs=horizon();const pts=projSeries();const n=pts.length-1;
+  const W=320,H=160,padL=40,padR=12,padT=12,padB=20;
+  const target=targetVal(), maxV=Math.max(target*1.06,Math.max.apply(null,pts)*1.06), minV=Math.min.apply(null,pts)*.94;
+  const plotW=W-padL-padR, plotH=(H-padB)-padT;
+  const X=i=>padL+i/n*plotW, Y=v=>(H-padB)-(v-minV)/(maxV-minV)*plotH;
   let out=`<svg width="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
-  for(let g=0;g<=3;g++){const y=pad+g*(H-2*pad)/3;out+=`<line x1="0" y1="${y}" x2="${W}" y2="${y}" stroke="rgba(255,255,255,.08)"/>`;}
-  // goal line
-  const gy=Y(target);out+=`<line x1="0" y1="${gy}" x2="${W}" y2="${gy}" stroke="#9aa0aa" stroke-width="1.5" stroke-dasharray="4 4"/>`;
-  out+=`<text x="6" y="${gy-5}" font-family="Inter" font-size="9" fill="#c7ccd4">Target S$${(target/1000).toFixed(0)}k</text>`;
-  if(state.chart==='bar'){
-    for(let yIdx=1;yIdx<=yrs;yIdx++){const v=pts[yIdx*12];const x=X(yIdx*12),bw=(W-2*pad)/yrs*.5;
-      out+=`<rect x="${x-bw/2}" y="${Y(v)}" width="${bw}" height="${H-pad-Y(v)}" rx="3" fill="url(#g1)"/>`;}
-  } else if(state.chart==='candle'){
-    const cps=Math.min(16,Math.max(6,yrs*2)),step=n/cps,bw=(W-2*pad)/cps*.46;
-    for(let c=0;c<cps;c++){const i0=Math.round(c*step),i1=Math.round((c+1)*step);
-      const wob=Math.sin(c*1.3+1)*vol*.5;
-      const open=pts[i0],close=pts[i1]*(1+wob*.05);
-      const up=close>=open,col=up?'#34d399':'#fb7185';
-      const hi=Math.max(open,close)*(1+vol*.05+Math.abs(Math.sin(c*2.1))*vol*.04);
-      const lo=Math.min(open,close)*(1-vol*.04-Math.abs(Math.cos(c*1.7))*vol*.04);
-      const x=X((i0+i1)/2),yT=Y(Math.max(open,close)),yB=Y(Math.min(open,close));
-      out+=`<line x1="${x}" y1="${Y(hi)}" x2="${x}" y2="${Y(lo)}" stroke="${col}" stroke-width="1.4"/>`;
-      out+=`<rect x="${x-bw/2}" y="${yT}" width="${bw}" height="${Math.max(2,yB-yT)}" rx="1.5" fill="${col}"/>`;}
-  } else {
-    let d='',a='';for(let i=0;i<=n;i++){const x=X(i),y=Y(pts[i]*(1+Math.sin(i/2.5)*vol*.06));d+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1)+' ';}
-    a=d+`L ${X(n)} ${H-pad} L ${X(0)} ${H-pad} Z`;
-    if(state.chart==='area')out+=`<path d="${a}" fill="url(#ga)" opacity=".5"/>`;
-    out+=`<path d="${d}" fill="none" stroke="url(#g1)" stroke-width="2.6" stroke-linejoin="round"/>`;
-    out+=`<circle cx="${X(n)}" cy="${Y(pts[n])}" r="4" fill="#fff"/>`;
-  }
+  // y gridlines + value labels
+  for(let g=0;g<=3;g++){const yy=padT+g*plotH/3;const val=maxV-(g/3)*(maxV-minV);
+    out+=`<line x1="${padL}" y1="${yy.toFixed(1)}" x2="${W-padR}" y2="${yy.toFixed(1)}" stroke="rgba(255,255,255,.08)"/>`;
+    out+=`<text x="${padL-6}" y="${(yy+3).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="8" fill="#9aa0aa">S$${Math.round(val/1000)}k</text>`;}
+  // axis lines
+  out+=`<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="rgba(255,255,255,.28)"/>`;
+  out+=`<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="rgba(255,255,255,.28)"/>`;
+  // target line
+  const gy=Y(target);out+=`<line x1="${padL}" y1="${gy.toFixed(1)}" x2="${W-padR}" y2="${gy.toFixed(1)}" stroke="#9aa0aa" stroke-width="1.4" stroke-dasharray="4 4"/>`;
+  out+=`<text x="${W-padR}" y="${(gy-5).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="9" fill="#c7ccd4">Target S$${(target/1000).toFixed(0)}k</text>`;
+  // area + line
+  let d='';for(let i=0;i<=n;i++){d+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(pts[i]).toFixed(1)+' ';}
+  out+=`<path d="${d}L ${X(n).toFixed(1)} ${H-padB} L ${X(0).toFixed(1)} ${H-padB} Z" fill="url(#ga)" opacity=".45"/>`;
+  out+=`<path d="${d}" fill="none" stroke="url(#g1)" stroke-width="2.4" stroke-linejoin="round"/>`;
+  // news markers
+  NEWS.forEach(ev=>{const i=Math.round(ev.x*n);const x=X(i),y=Y(pts[i]);const col=ev.dir>0?'#34d399':'#fb7185';
+    out+=`<line x1="${x.toFixed(1)}" y1="${y.toFixed(1)}" x2="${x.toFixed(1)}" y2="${H-padB}" stroke="${col}" stroke-width="1" stroke-dasharray="2 3" opacity=".5"/>`;
+    out+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" fill="${col}" stroke="#14161c" stroke-width="2"/>`;
+    out+=`<text x="${x.toFixed(1)}" y="${(y-9).toFixed(1)}" text-anchor="middle" font-family="Inter" font-weight="700" font-size="8.5" fill="${col}">${ev.dir>0?'+':'–'}</text>`;});
+  // sim 'you are here'
+  if(state.simT){const i=Math.min(n,Math.round((state.simT/yrs)*n));out+=`<line x1="${X(i).toFixed(1)}" y1="${padT}" x2="${X(i).toFixed(1)}" y2="${H-padB}" stroke="#fff" stroke-width="1.4" opacity=".8"/><circle cx="${X(i).toFixed(1)}" cy="${Y(pts[i]).toFixed(1)}" r="4.5" fill="#fff"/>`;}
+  out+=`<circle cx="${X(n).toFixed(1)}" cy="${Y(pts[n]).toFixed(1)}" r="4" fill="#fff"/>`;
+  // x-axis year labels
+  [0,Math.round(n/3),Math.round(2*n/3),n].forEach(i=>{const yr=2025+Math.round((i/n)*yrs);
+    out+=`<text x="${X(i).toFixed(1)}" y="${H-6}" text-anchor="${i===0?'start':i>=n?'end':'middle'}" font-family="Inter" font-size="8" fill="#9aa0aa">${i===0?'Now':yr}</text>`;});
   out+=`<defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#ec1c24"/><stop offset="1" stop-color="#ff7a80"/></linearGradient>
     <linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ec1c24"/><stop offset="1" stop-color="#ec1c24" stop-opacity="0"/></linearGradient></defs></svg>`;
   return out;
@@ -1183,27 +1493,21 @@ home(){return `<div class="ohero">
     <img src="data:image/jpeg;base64,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" style="width:100%;display:block"/>
   </div>`;},
 
-link(){const conf=confidence();return appbar('Link portfolios','risk')+`<div class="pad">
-  <div class="stepbadge">Step 4 · Connect more. Get smarter recommendations</div>
-  <h1>Give your AI team a complete view</h1>
-  <p class="sub">Link your investment accounts so your AI team can see your whole portfolio. The more it can see, the better it can help you diversify and optimize your plan. Read-only.</p>
-
-  <div class="card" style="background:linear-gradient(120deg,#f5f3ff,#fdf2ff);border-color:#ece8ff">
-    <div class="row"><div><div style="font-size:12px;color:var(--muted);font-weight:600">AI confidence</div><div class="confbig" id="confVal">${conf}%</div></div>
-      <div style="text-align:right"><div style="font-size:12px;color:var(--muted);font-weight:600">Linked value</div><div class="disp" style="font-weight:800;font-size:20px" id="netVal">S$${linkedNet().toLocaleString()}</div></div></div>
-    <div class="meter"><span id="confBar" style="width:${conf}%"></span></div>
-    <div style="font-size:12px;color:var(--muted)" id="confHint">Link 2 more for a high-confidence plan.</div>
-  </div>
+link(){return appbar('Link accounts','portfolio')+`<div class="pad">
+  <h1 style="margin-top:6px">Give your AI team a complete view</h1>
+  <p class="sub">Add your outside holdings so your team can plan around your whole portfolio — diversify better and avoid overlap. Read-only; nothing is moved.</p>
 
   <div class="card" style="background:#fff5f5;border-color:#f6d2d4;cursor:pointer" onclick="linkSGFinDex()">
     <div class="row"><div class="li" style="width:40px;height:40px;border-radius:11px;background:#5a6470;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:11px;font-family:'Sora'">SG</div>
       <div><div class="ln" style="font-weight:700;font-size:14px">Link via SGFinDex</div><div class="lx" style="font-size:12px;color:var(--muted)">Pull CPF &amp; your local SG bank balances with Singpass</div></div>
-      <div class="lpill todo" style="margin-left:auto">Connect</div></div>
+      <div class="lpill todo" id="sgPill" style="margin-left:auto">Connect</div></div>
   </div>
 
-  <div id="provList">${state.providers.map(p=>provRow(p)).join('')}</div>
-  <div class="lrow" onclick="manualModal()" style="border-style:dashed;justify-content:center;color:var(--red);font-weight:700">＋ Add another account manually</div>
-  <button class="btn primary" onclick="go('analyze')">Continue →</button>
+  <div class="sbsec-h" style="margin:20px 0 8px">Brokerages &amp; other holdings</div>
+  <div id="provList">${state.providers.filter(p=>p.manual).map(p=>provRow(p)).join('')||'<div class="sbempty">None added yet — add an overseas broker, robo, or property below.</div>'}</div>
+  <div class="lrow" onclick="manualModal()" style="border-style:dashed;justify-content:center;color:var(--red);font-weight:700">＋ Add a brokerage manually</div>
+
+  <button class="btn primary" onclick="go('portfolio')">Done — back to my plan →</button>
 </div>`;},
 
 goals(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
@@ -1216,20 +1520,36 @@ goals(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   return appbar('Your goals','team')+`<div class="pad" style="padding-bottom:24px">
   <div class="stepbadge">Step 2 · Tell us about your goals</div>
   <h1>Quick chat with your team</h1>
-  <p class="sub">We've already got some of this on file. Your agents just need a few more details.</p>
+  <p class="sub">We've already got some of this on file. Use the suggested answer or type your own — or skip, and your team will plan from what it already knows.</p>
   <div id="goalChat" class="goalchat"></div>
+  <div style="text-align:center;margin-top:6px"><a onclick="saveGoals()" style="font-size:13px;font-weight:600;color:var(--red);cursor:pointer">Skip — let my team decide from what it knows →</a></div>
 </div>`;},
 
-risk(){const rc=riskComfort();return appbar('Risk comfort','goals')+`<div class="pad">
+risk(){const surplus=BANK_KNOWN.monthlyIncome-BANK_KNOWN.monthlySpend;return appbar('Risk comfort','goals')+`<div class="pad">
   <div class="stepbadge">Step 3 · Your risk comfort</div>
-  <h1>Six quick questions</h1>
-  <p class="sub">Answer these so WealthPilot can build a portfolio simulation that fits your comfort level. There are no right or wrong answers.</p>
-  ${RISK_Q.map((q,n)=>`<div class="qcard">
-    <div class="qq"><span class="qnum">${n+1}</span>${q.q}</div>
-    <div class="rkopts">${q.opts.map(o=>`<button class="rkopt ${(state.qa[q.id]??3)===o[1]?'on':''}" onclick="setChoice('${q.id}',${o[1]})">${o[0]}</button>`).join('')}</div>
-  </div>`).join('')}
+  <h1>Here's what we think fits you</h1>
+  <p class="sub">From your goals, timeline and what's already on file with OCBC, WealthPilot assessed your risk comfort — no questionnaire needed.</p>
+
   <div class="rccard" id="rcCard">${rcHTML()}</div>
-  <button class="btn primary" onclick="saveRisk()">Continue →</button>
+
+  <div class="card" style="background:var(--bg);border:none;box-shadow:none;padding:14px 0">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">How we assessed this</div>
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div class="assessrow"><span>Goal timeline</span><b>${state.years} years</b></div>
+      <div class="assessrow"><span>Target amount</span><b>S$${(state.target/1000).toFixed(0)}k</b></div>
+      <div class="assessrow"><span>Investable assets</span><b>S$${Math.round(BANK_KNOWN.investableAssets/1000)}k on file</b></div>
+      <div class="assessrow"><span>Monthly surplus</span><b>S$${surplus.toLocaleString()}/mo</b></div>
+      <div class="assessrow"><span>Your agents' appetite</span><b>${appetiteLabel()}</b></div>
+    </div>
+  </div>
+
+  <button class="btn primary" onclick="saveRisk()">Looks right, continue →</button>
+
+  <div class="riskadj">
+    <div class="riskadj-link" onclick="toggleRiskAdj()">This doesn't feel right? Adjust my profile <span>${state.expand.riskAdj?'▴':'▾'}</span></div>
+    ${state.expand.riskAdj?`<div class="riskseg" style="margin-top:11px">${RISK_WORDS.map((w,i)=>`<button class="riskpill ${riskIndex()===i?'on':''}" onclick="setRisk(${i})">${w}</button>`).join('')}</div>
+    <div class="rcadjnote">Move toward growth for more upside (and bigger swings), or toward conservative to play safe — your mix and funds update to match. Most clients keep our assessment.</div>`:''}
+  </div>
 </div>`;},
 
 team(){return appbar('WealthPilot','home')+`<div class="pad" style="padding-bottom:32px">
@@ -1255,25 +1575,19 @@ team(){return appbar('WealthPilot','home')+`<div class="pad" style="padding-bott
           <span class="agrow-chevron" id="chev_${a.id}" style="color:var(--muted);font-size:14px;transition:transform .25s">${open?'▲':'▼'}</span>
         </div>
       </div>
-      <div class="agrow-body" id="agbody_${a.id}" data-open="${open?'1':'0'}" style="max-height:${open?'500px':'0'};overflow:hidden;transition:max-height .38s ease">
+      <div class="agrow-body" id="agbody_${a.id}" data-open="${open?'1':'0'}" style="max-height:${open?'520px':'0'};overflow:hidden;transition:max-height .38s ease">
         <div style="padding:10px 0 4px;border-top:1px solid var(--line);margin-top:10px">
 
-          <div style="font-size:12px;color:var(--ink2);line-height:1.5;margin-bottom:10px;font-style:italic;opacity:.85">${d.expertise}</div>
+          <div style="font-size:12.5px;color:var(--ink2);line-height:1.45;margin-bottom:11px">${AGENT_HOOKS[a.id]}</div>
 
-          <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">📊 Your insights</div>
-          <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:10px">
-            ${d.insights.map(ins=>`<div style="background:var(--bg);border-radius:10px;padding:8px 10px">
-              <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px">
-                <div style="font-size:11px;color:var(--muted);font-weight:600">${ins.label}</div>
-                <div style="font-size:12px;font-weight:800;color:var(--ink)">${ins.value}</div>
-              </div>
-              <div style="font-size:11px;color:var(--ink2);line-height:1.4;opacity:.85">${ins.note}</div>
-            </div>`).join('')}
-          </div>
+          <div style="font-size:10px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:7px">📊 What I see in your data</div>
+          <ul class="agbul" style="margin-bottom:11px">
+            ${d.insights.map(ins=>`<li><b>${ins.label}: ${ins.value}.</b> ${ins.note}</li>`).join('')}
+          </ul>
 
-          <div style="background:linear-gradient(120deg,#fff8e1,#fff3cd);border:1px solid #ffe08a;border-radius:12px;padding:10px 12px">
-            <div style="font-size:10px;font-weight:800;color:#b86c00;text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px">✦ Our consideration</div>
-            <div style="font-size:12px;color:#6b4c00;line-height:1.5">${d.consideration}</div>
+          <div style="background:linear-gradient(120deg,#fff8e1,#fff3cd);border:1px solid #ffe08a;border-radius:12px;padding:9px 12px">
+            <div style="font-size:10px;font-weight:800;color:#b86c00;text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px">✦ What I'd consider</div>
+            <ul class="agbul amber" style="margin:0"><li>${d.consideration}</li></ul>
           </div>
         </div>
       </div>
@@ -1284,11 +1598,11 @@ team(){return appbar('WealthPilot','home')+`<div class="pad" style="padding-bott
   <div class="judgecard" style="margin-top:14px"><div class="pixframe gold" style="width:54px;flex-shrink:0">${avatar(JUDGE)}</div>
     <div><div class="jn">Orchestrator</div><div class="jd">Weighing all of that against your Balanced risk profile, here is your personalised portfolio — four asset classes, with the funds picked for you in each.</div></div></div>
 
-  <div style="text-align:center;font-size:12px;color:var(--muted);margin:10px 0 4px">${state.agents.length}/2 agents selected</div>
-  <button class="btn ai glowpulse" onclick="go('goals')">Continue →</button>
+  <div style="text-align:center;font-size:12px;color:${state.agents.length?'var(--muted)':'#a87b1f'};font-weight:500;margin:10px 0 4px">${state.agents.length?state.agents.length+'/2 agents selected':'✦ Pick at least 1 agent to build your plan'}</div>
+  <button class="btn ai glowpulse" ${state.agents.length?'':'style="opacity:.55;pointer-events:none"'} onclick="go('goals')">Continue →</button>
 </div>`;},
 
-analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));return appbar('Building your plan','link')+`<div class="pad" style="padding-top:14px">
+analyze(){runAnalyze();const sel=AGENTS.filter(a=>state.agents.includes(a.id));return appbar('Building your plan','risk')+`<div class="pad" style="padding-top:14px">
   <div style="text-align:center;margin:4px 0 14px"><div class="ai-orb" style="width:52px;height:52px;margin:0 auto 12px"></div>
     <div class="eyebrow ai">Your AI team is working</div>
     <h1 style="margin-top:4px">Building your plan</h1>
@@ -1306,30 +1620,29 @@ reco(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
   return appbar('Your plan','analyze')+`<div class="pad">
   <div class="eyebrow ai">Your AI team's recommendation</div>
   <h1>A plan built around your ${goalLabel()}</h1>
-  <p class="sub">Here's what each agent on your team flagged — and the portfolio it points to, kept within your assessed risk profile.</p>
+  <p class="sub">Here's what each agent flagged in your situation — and the mix it points to, kept within your ${prof} risk profile.</p>
 
   <h2>What your AI team noticed</h2>
   ${signals.map(s=>`<div class="signal" style="border-left:3px solid ${s.ag.color};background:${s.ag.color}0c">
     <div class="miniframe" style="box-shadow:0 2px 8px ${s.ag.color}40">${avatar(s.ag)}</div>
     <div><div class="byag" style="color:${s.ag.color}">${s.ag.name} noticed</div><div class="st">${s.t}</div><div class="sd">${s.d}</div></div></div>`).join('')}
-  ${state.regions.length?`<div class="signal" style="border-left:3px solid ${AGENTS.find(a=>a.id==='grow').color};background:${AGENTS.find(a=>a.id==='grow').color}0c"><div class="miniframe">${avatar(AGENTS.find(a=>a.id==='grow'))}</div><div><div class="byag">Your regions</div><div class="st">${state.regions.join(', ')}</div><div class="sd">I weighted your equities toward the markets you chose.</div></div></div>`:''}
 
-  <div class="signal" style="border-left:3px solid ${JUDGE.color};background:${JUDGE.color}0c;border-radius:13px;padding:12px;margin-bottom:10px;display:flex;gap:11px;align-items:flex-start">
-    <div class="miniframe" style="box-shadow:0 2px 8px ${JUDGE.color}40">${avatar(JUDGE)}</div>
-    <div style="flex:1"><div class="byag" style="color:${JUDGE.color}">Orchestrator</div><div class="sd">Weighing all of that against your <b>${prof}</b> risk profile, here is your personalised portfolio — four asset classes, with the funds picked for you in each.</div></div>
-  </div>
+  <h2 style="margin-top:8px">The Orchestrator's verdict</h2>
+  <div class="judgestrip"><div class="pixframe gold" style="width:44px;flex-shrink:0">${avatar(JUDGE)}</div>
+    <div><div style="font-family:'Sora';font-weight:800;font-size:14px;color:#fff">Orchestrator</div>
+      <div style="font-size:12px;color:#e8d8ad;line-height:1.45">Weighed against your <b style="color:#fff">${prof}</b> profile, here's your personalised mix across four asset classes — with the funds picked for each.</div></div></div>
 
-  <div class="card">
-    <div class="donutwrap">${donutSVG(118)}
-      <div style="flex:1">
-        <div class="kpi" style="border:none;padding:2px 0 6px"><span class="muted">Risk profile</span><b>${prof}</b></div>
-        <div class="kpi" style="border:none;padding:2px 0 8px"><span class="muted">This plan's risk</span><b style="color:${riskWeight()>=75?'var(--red)':'var(--ink)'}">${riskLabel()}</b></div>
-        ${KEYS4.map(k=>`<div class="bk"><span class="swatch" style="background:${BK[k].hex}"></span><span class="bn">${BK[k].name}</span><span class="bv">${state.buckets[k]}%</span></div>`).join('')}</div>
+  <div class="card" style="text-align:center;margin-top:11px">
+    <div style="display:flex;justify-content:center">${pieSVG(150)}</div>
+    <div class="legend4">${KEYS4.map(x=>`<div class="lg"><span class="swatch" style="background:${BK[x].hex}"></span>${BK[x].name} <b>${state.buckets[x]}%</b></div>`).join('')}</div>
+    <div class="recorisk">
+      <div><span>Your risk profile</span><b>${prof}</b></div>
+      <div><span>This plan's risk</span><b style="color:${riskWeight()>=75?'var(--red)':'var(--ink)'}">${riskLabel()}</b></div>
     </div>
-    <div class="disc">Illustrative only. Projections are not guaranteed and your capital is at risk.</div>
   </div>
 
-  <button class="btn ai glowpulse" onclick="go('sandbox')">Adjust &amp; explore my plan →</button>
+  <button class="btn primary" onclick="go('portfolio')">Adjust &amp; explore my plan →</button>
+  <div class="disc">Illustrative only. Projections are not guaranteed and your capital is at risk.</div>
 </div>`;},
 
 sandbox(){return appbar('Adjust your plan','reco')+`<div class="pad">
@@ -1362,8 +1675,8 @@ sandbox(){return appbar('Adjust your plan','reco')+`<div class="pad">
 
   <div class="alloc" id="allocBox"></div>
 
-  <h2>Asset baskets <span style="font-weight:500;color:var(--muted);font-size:12px">— key in the amount per fund</span></h2>
-  <div id="buckets">${KEYS4.map(bucketCard).join('')}</div>
+  <h2>Asset baskets <span style="font-weight:500;color:var(--muted);font-size:12px">— tap a class to view & adjust its funds</span></h2>
+  <div id="buckets">${renderBuckets()}</div>
 
   <button class="btn primary" onclick="go('choose')">Continue →</button>
 </div>`;},
@@ -1467,6 +1780,9 @@ review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
     <div style="font-size:12px;opacity:.75;margin-top:4px">Portfolio S$${curV.toLocaleString()} · ahead of a 60/40 benchmark (+3.1%)</div>
   </div>
 
+  <h2>What moved your holdings</h2>
+  <div class="newswrap">${newsFeed()}</div>
+
   <h2>Proposed adjustments</h2>
   <div class="propcard ${P('pr1')?'on':''}" onclick="toggleProp('pr1')">
     <div class="miniframe" style="width:32px">${avatar(aGuard)}</div>
@@ -1482,7 +1798,181 @@ review(){const aGuard=pickAgent('income'),aGlobal=pickAgent('grow');
   <button class="btn primary" onclick="applyReview()">Apply approved changes</button>
   <div style="text-align:center;margin-top:12px"><a onclick="go('pilot')" style="font-size:13px;font-weight:600;color:var(--red);cursor:pointer">Skip — keep my plan as is</a></div>
   <div class="disc">You're always in control. Nothing changes until you approve. Capital at risk; returns not guaranteed.</div>
-</div>`;}
+</div>`;},
+
+/* ===== orchestrated view (multi-agent) ===== */
+orchestrate(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));applyAgents();
+  return appbar('Orchestrated view','goals')+`<div class="pad">
+  <div class="judgestrip"><div class="pixframe gold" style="width:46px;flex-shrink:0">${avatar(JUDGE)}</div>
+    <div><div style="font-family:'Sora';font-weight:800;font-size:14px;color:#fff">Orchestrator</div><div style="font-size:12px;color:#e8d8ad">Weighing ${sel.length} agents into one plan</div></div></div>
+  <h1 style="margin-top:16px">Your agents weighed and combined</h1>
+  <p class="sub">Each agent pulls in a different direction. I weighted them by your goals and what your data implies, then blended their target mixes into one.</p>
+  <div class="weighwrap">
+    ${sel.map(a=>{const w=Math.round(100/sel.length);return `<div class="weighrow">
+      <div class="miniframe" style="width:34px;flex-shrink:0">${avatar(a)}</div>
+      <div style="flex:1;min-width:0"><div style="font-weight:800;font-size:13px;font-family:'Sora'">${a.name}</div><div style="font-size:11.5px;color:var(--muted)">${ORCH_WANT[a.id]||'its own tilt'}</div></div>
+      <div class="weighpct" style="color:${a.color}">${w}%</div>
+    </div>`;}).join('')}
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="donutwrap">${pieSVG(118)}
+      <div style="flex:1">${KEYS4.map(k=>`<div class="bk"><span class="swatch" style="background:${BK[k].hex}"></span><span class="bn">${BK[k].name}</span><span class="bv">${state.buckets[k]}%</span></div>`).join('')}</div>
+    </div>
+    <div class="disc">The blended allocation across your four asset classes. You can reshape it next.</div>
+  </div>
+  <button class="btn ai glowpulse" onclick="go('analyze')">Watch my team decide →</button>
+</div>`;},
+
+/* ===== AI recommended portfolio: donut + bucket toggles + products ===== */
+portfolio(){if(!PRODUCTS.some(p=>p.bucket&&p.amt)){applyAgents();recommendAmounts();}
+  recalcBuckets();
+  if(!state._aiProj){state._aiProj=sandProjValue();state._aiRet=pRetEff();}
+  const k=state.activeBucket;
+  return appbar('Your portfolio',state.agents.length>1?'orchestrate':'goals')+`<div class="pad">
+  <div class="sgbanner" onclick="go('link')"><span>🔗</span><div>Link SGFinDex &amp; other brokerages so your team sees everything — sharper plan, optional.</div><span class="sglink">Link</span></div>
+
+  <div class="eyebrow ai">Your AI-recommended portfolio</div>
+  <h1 style="margin-bottom:4px">${riskComfort().word} ${PNAME[state.agents[0]]||''} mix</h1>
+  <p class="sub" style="margin-bottom:12px">Built from your agents and your OCBC data. Below is your mix across four asset classes, and the funds inside each.</p>
+
+  <div class="card" style="text-align:center">
+    <div style="display:flex;justify-content:center">${pieSVG(150)}</div>
+    <div class="legend4">${KEYS4.map(x=>`<div class="lg"><span class="swatch" style="background:${BK[x].hex}"></span>${BK[x].name} <b>${state.buckets[x]}%</b></div>`).join('')}</div>
+  </div>
+
+  <h2 style="margin-bottom:4px">Your asset classes</h2>
+  <p class="sub" style="margin:0 0 8px">Tap a class to see its funds, and tap <b>Edit</b> to reshape any basket in the sandbox.</p>
+  ${bucketSeg(k)}
+  <div style="text-align:center;font-size:11.5px;color:var(--muted);margin:-6px 0 10px">${BK[k].name} · ${state.buckets[k]}% of your plan</div>
+
+  <div class="prodwrap" id="prodWrap">${productList(k)}</div>
+
+  <button class="editbtn" onclick="openTune('${k}')">✎ Edit ${BK[k].name} in the sandbox</button>
+
+  <button class="btn primary" onclick="go('projection')">Confirm &amp; see projection →</button>
+</div>`;},
+
+/* ===== per-bucket sandbox (playground) ===== */
+tune(){const k=state.editBucket||state.activeBucket;const active=PRODUCTS.filter(p=>p.bucket===k);const avail=PRODUCTS.filter(p=>p.cls===k&&p.bucket!==k);const p=aiPersona();
+  return appbar(BK[k].name+' sandbox','portfolio')+`<div class="pad">
+  <div class="coachstrip" id="coachStrip" onclick="openChat('coach:${k}')">
+    <div class="cav">${avatar(p)}</div>
+    <div style="flex:1"><div id="coachMsg">${state._coachMsg||COACH_BASE(k)}</div>
+      <div class="coachcta" style="color:${p.color}">Tap to ask ${p.name} →</div></div>
+  </div>
+
+  <div class="sandintro">This is your <b>${BK[k].name} sandbox</b>. Set how much to put into each fund — the dollar amounts decide its share of your donut. Drop funds in from the rail, pull any out with ×, and watch the projection react.</div>
+
+  ${sandProjPanel()}
+  <div class="sbsec-h" style="margin-bottom:8px">Your ${BK[k].name} basket <span class="sbsec-c">S$${bucketVal(k).toLocaleString()} · ${state.buckets[k]}% of plan</span></div>
+  <div class="sandcanvas" id="sbActive">
+    ${active.length?active.map(pr=>sandTile(pr,'in')).join(''):'<div class="canvasempty">Empty basket — tap funds below to drop them in.</div>'}
+  </div>
+
+  <div class="sbsec-h" style="margin:16px 0 8px">Recommended for this class <span class="sbsec-c">${avail.length}</span></div>
+  <div class="sandrail" id="sbAvail">
+    ${avail.length?avail.map(pr=>sandTile(pr,'out')).join(''):'<div class="sbempty">Everything available is already in your basket.</div>'}
+  </div>
+
+  <div class="sblegend"><span><span class="pbadge ai">AI</span> recommended by ${p.name}</span><span><span class="pbadge ed">Edited</span> changed by you</span></div>
+  <button class="btn primary" onclick="closeTune()">Done — back to portfolio</button>
+</div>`;},
+
+/* ===== projection with per-product growth + advance sim ===== */
+projection(){recalcBuckets();state.chart='line';state.invest=Math.max(1000,totalVal());if(state.simT==null)state.simT=0;
+  const k=state.activeBucket;const p=aiPersona();
+  return appbar('Projection','portfolio')+`<div class="pad">
+  <div class="coachstrip" onclick="openChat('projection')">
+    <div class="cav">${avatar(p)}</div>
+    <div style="flex:1"><div>Your line climbs over time but with real dips along the way — I've marked the market events behind each one. Tap to ask me about them.</div>
+      <div class="coachcta" style="color:${p.color}">Ask ${p.name} about the ups &amp; downs →</div></div>
+  </div>
+
+  <div class="eyebrow ai">If you stay the course</div>
+  <h1 style="margin-bottom:4px">Where this plan could take you</h1>
+  <p class="sub" style="margin-bottom:12px">Your confirmed mix projected to ${2025+horizon()} — with the real ups and downs a market throws at you, not a smooth line.</p>
+  <div class="chartcard">
+    <div style="font-size:12px;opacity:.7">Projected value · ${simLabel()==='today'?'starting today':simLabel()}</div>
+    <div class="bigval" id="projBig" style="margin:2px 0 2px">S$${(state.simT>0?projValue(state.simT):Math.round(totalVal())).toLocaleString()}</div>
+    <div style="font-size:11.5px;opacity:.6;margin-bottom:8px">Heading toward S$${projValue(horizon()).toLocaleString()} by ${2025+horizon()}</div>
+    <div id="chartBox">${projChart()}</div>
+    <div class="simctl">
+      <span class="simlbl">Advance</span>
+      <button class="simbtn" onclick="advanceSim('week')">+ 1 week</button>
+      <button class="simbtn" onclick="advanceSim('month')">+ 1 month</button>
+      <button class="simbtn" onclick="advanceSim('year')">+ 1 year</button>
+      ${state.simT?`<button class="simbtn reset" onclick="resetSim()">↺ Reset</button>`:''}
+    </div>
+  </div>
+
+  <h2 style="margin-top:6px">What moved your projection</h2>
+  <div class="newswrap">${newsFeed()}</div>
+
+  <h2 style="margin-top:14px">Your confirmed holdings <span style="font-size:12px;font-weight:600;color:var(--muted)">· growth ${simLabel()==='today'?'from today':'after '+simLabel().replace(' in','')}</span></h2>
+  <div class="hsumwrap">${holdingsSummary()}</div>
+  <div class="hsumhint">Each holding's growth moves with the simulation above — advance by week, month or year to watch it compound. To change the mix, edit a basket in the sandbox.</div>
+
+  <button class="btn ai glowpulse" onclick="go('advice')">What does my team think? →</button>
+</div>`;},
+
+/* ===== final orchestrator + agents (family tree) ===== */
+advice(){const sel=AGENTS.filter(a=>state.agents.includes(a.id));
+  return appbar('Final advice','projection')+`<div class="pad">
+  <div class="eyebrow ai">Your team's sign-off</div>
+  <h1 style="margin-bottom:4px">The committee on your final mix</h1>
+  <p class="sub" style="margin-bottom:14px">They've seen your confirmed portfolio and its projection. Here's their closing word.</p>
+
+  <div class="tree">
+    <div class="treetop"><div class="pixframe gold" style="width:56px">${avatar(JUDGE)}</div>
+      <div class="treename">Orchestrator</div>
+      <div class="treesay">Balanced across your team and kept within the risk your data implies. I'm comfortable signing this off.</div>
+    </div>
+    <div class="treeline"></div>
+    <div class="treekids ${sel.length===1?'one':''}">
+      ${sel.map(a=>`<div class="treekid"><span class="kidconn"></span><div class="miniframe" style="width:42px">${avatar(a)}</div>
+        <div class="treename" style="color:${a.color}">${a.name}</div>
+        <div class="treesay">${AGENT_ADVICE(a.id)}</div></div>`).join('')}
+    </div>
+  </div>
+
+  <button class="btn primary" onclick="go('trade')">I'm ready to trade →</button>
+  <div style="text-align:center;margin-top:10px"><a onclick="go('portfolio')" style="font-size:12.5px;color:var(--red);font-weight:600;cursor:pointer">← Adjust the mix first</a></div>
+</div>`;},
+
+/* ===== trade: Oscar AI fed; iOCBC equities / OCBC the rest ===== */
+trade(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
+  return appbar('Trade','advice')+`<div class="pad">
+  <div class="eyebrow ai">Right inside the OCBC app you already use</div>
+  <h1 style="margin-bottom:4px">Place your whole plan in a tap</h1>
+  <p class="sub" style="margin-bottom:14px">Your AI-built mix carries straight into your OCBC app — every fund across all four asset classes is pre-loaded. OCBC routes each one to the right channel, so there's nothing to set up, find, or key in.</p>
+
+  <div class="acctcard">
+    <div class="acctrow"><div class="acctic" style="background:#ec1c24">360</div>
+      <div style="flex:1;min-width:0"><div class="acctlbl">Funded from</div><div class="acctname">OCBC 360 Account · •••• 8842</div></div>
+      <div class="acctav">S$${BANK_KNOWN.investableAssets.toLocaleString()}<span>available</span></div></div>
+    <div class="acctdiv"></div>
+    <div class="acctrow"><div class="acctic" style="background:#14233a">OEA</div>
+      <div style="flex:1;min-width:0"><div class="acctlbl">Held in</div><div class="acctname">OCBC Investment Account (OEA)</div></div>
+      <span class="acctready"><span class="rdot"></span>Ready</span></div>
+  </div>
+
+  <h2 style="margin-top:16px">Your order</h2>
+  ${KEYS4.map(k=>{const ps=PRODUCTS.filter(p=>p.bucket===k);if(!ps.length)return '';const bv=ps.reduce((s,p)=>s+(p.amt||0),0);
+    return `<div class="ordgroup">
+      <div class="ordhead"><span class="bdot" style="background:${BK[k].hex}"></span>${BK[k].name}<span class="ordvia">${CHANNEL[k]}</span><span class="ordsum">S$${bv.toLocaleString()}</span></div>
+      ${ps.map(p=>`<div class="ordrow"><div class="picon sm" style="background:${BK[k].hex}">${prodTicker(p.name).slice(0,2)}</div>
+        <div style="flex:1;min-width:0"><div class="pname">${cleanName(p.name)}</div><div class="ptk">${prodTicker(p.name)}</div></div>
+        <div class="ordamt">S$${(p.amt||0).toLocaleString()}</div></div>`).join('')}
+    </div>`;}).join('')}
+  <div class="ordtotal2">
+    <div class="otr"><span>Invest today</span><b>S$${total.toLocaleString()}</b></div>
+    <div class="otr sub"><span>＋ then top up monthly</span><b>S$${state.monthly.toLocaleString()}/mo</b></div>
+  </div>
+  <div class="plannote">Suggested by your AI team for your ${goalLabel()} — your full S$${Math.round(BANK_KNOWN.investableAssets/1000)}k investable balance now, plus a monthly contribution. It never places more than you actually have; the rest of the journey to your goal comes from these top-ups and time.</div>
+
+  <button class="btn primary" onclick="placeOrder()">Review &amp; place order →</button>
+  <div class="disc">One order, executed by OCBC across the relevant channels (Unit Trusts, ETFs, bonds, cash & REITs). Investments carry risk; projections aren't guaranteed.</div>
+</div>`;},
 };
 
 /* ============ component renderers ============ */
@@ -1491,6 +1981,340 @@ function provRow(p){return `<div class="lrow" onclick="linkProv('${p.id}')">
   <div><div class="ln">${p.name}</div><div class="lx">${p.sub}</div></div>
   <div class="lpill ${p.linked?'done':'todo'}">${p.linked?'Linked · S$'+(p.val/1000).toFixed(0)+'k':'Link'}</div></div>`;}
 
+function bucketTabs(){
+  return `<div class="bktabs" id="bktabs">${KEYS4.map(k=>{
+    const on=state.activeBucket===k;
+    return `<div class="bktab ${on?'bktab-on':''}" style="${on?`background:${BK[k].hex};border-color:${BK[k].hex}`:''}" onclick="setActiveBucket('${k}')">
+      <span class="dot" style="background:${on?'#fff':BK[k].hex}"></span>${BK[k].name}<span class="bktabpct">${state.buckets[k]}%</span>
+    </div>`;
+  }).join('')}</div>`;
+}
+function setActiveBucket(k){
+  state.activeBucket=k;
+  const tabsEl=$('bktabs');
+  const tabsScrollX=tabsEl?tabsEl.scrollLeft:0;
+  keepScroll(()=>{
+    $('buckets').innerHTML=renderBuckets();
+    const newTabsEl=$('bktabs');
+    if(newTabsEl){
+      newTabsEl.scrollLeft=tabsScrollX;
+      const activeTab=newTabsEl.querySelector('.bktab-on');
+      if(activeTab){
+        const tabsRect=newTabsEl.getBoundingClientRect();
+        const activeRect=activeTab.getBoundingClientRect();
+        if(activeRect.left<tabsRect.left||activeRect.right>tabsRect.right){
+          activeTab.scrollIntoView({behavior:'smooth',inline:'nearest',block:'nearest'});
+        }
+      }
+    }
+  });
+}
+/* ===== new-flow helpers ===== */
+const ORCH_WANT={home:'protect the timeline, stay liquid',retire:'compound hard over decades',grow:'put idle cash to work in equities',income:'steady payouts from bonds & REITs'};
+function AGENT_ADVICE(id){const M={
+  home:'Comfortable here — enough stays within reach to protect your property plans as the date nears.',
+  retire:'Let it run. Time in the market is doing the heavy lifting; resist the urge to tinker.',
+  grow:'This finally puts your idle cash to work. Given your horizon you could even lean a touch bolder.',
+  income:'The income sleeve should start paying you within the first quarter. Sensible and cash-flow friendly.'};
+  return M[id]||'This looks reasonable for your situation.';}
+function COACH_BASE(k){return `I'm watching your ${BK[k].name} basket. Add or drop funds and I'll tell you what each move does to your plan — like a coach reading the board.`;}
+function bucketCoach(action,p){const k=p.cls,tk=prodTicker(p.name),g=state.goalLabel||'goal';
+  const L={
+    Funds:{add:`Bolder growth tilt with ${tk}. With your home loan to service, keep some cash buffer so a dip never forces your hand.`,remove:`Trimming equities lowers growth — fine if you're nervous, but you have time on your side for your ${g}.`},
+    FI:{add:`${tk} steadies the ride — sensible while your ${g} is in sight.`,remove:`Less fixed income means a bumpier ride; watch this as your goal date nears.`},
+    Cash:{add:`More cash means more safety and liquidity for your loan, but it's a drag on growth at your horizon.`,remove:`Cutting cash frees money to grow — just keep enough for emergencies and repayments.`},
+    Alt:{add:`${tk} diversifies away from equities — a useful satellite. Keep it modest.`,remove:`Fewer alternatives means less of a cushion if equities wobble.`}};
+  return (L[k]&&L[k][action])||(action==='tune'?`Updated ${tk} to S$${(p.amt||0).toLocaleString()} — that shifts ${BK[k].name} to ${state.buckets[k]}% of your plan.`:"Noted — I've reweighted your basket.");}
+function prodTicker(name){const m=name.match(/\(([^)]+)\)/);if(m)return m[1];return name.split(' ').filter(Boolean).slice(0,2).map(w=>w[0]).join('').toUpperCase();}
+function prodPct(p){const t=totalVal()||1;return Math.round((p.amt||0)/t*100);}
+function productList(k,withGrowth){const ps=PRODUCTS.filter(p=>p.bucket===k);
+  if(!ps.length)return '<div class="sbempty">No holdings in this class yet — edit in the sandbox.</div>';
+  return ps.map(p=>{const tk=prodTicker(p.name);let right=`<div class="pwt">${prodPct(p)}%</div>`;
+    if(withGrowth){const t=state.simT||0;const mult=Math.pow(1+RET[k],t);const g=Math.round((mult-1)*100);const fv=Math.round((p.amt||0)*mult);
+      right=`<div style="text-align:right"><div class="pgrow">${g>=0?'+':''}${g}%</div><div class="pfv">S$${fv.toLocaleString()}</div></div>`;}
+    return `<div class="prodcard" onclick="openChat('product:${p.id}')"><div class="picon" style="background:${BK[k].hex}">${tk.slice(0,2)}</div>
+      <div style="flex:1;min-width:0"><div class="pname">${p.name}${p.ow?' <span class="pbadge ai">AI</span>':''}${p.edited?' <span class="pbadge ed">Edited</span>':''}</div><div class="ptk">${tk} · tap to ask why</div></div>${right}</div>`;}).join('');}
+function provIcon(p){const n=p.name||'';
+  if(/iShares/i.test(n))return{bg:'#22c55e',txt:'iS'};
+  if(/Xtrackers/i.test(n))return{bg:'#f97316',txt:'X'};
+  if(/Nikko/i.test(n))return{bg:'#e11d48',txt:'NK'};
+  if(/PIMCO/i.test(n))return{bg:'#0ea5e9',txt:'PM'};
+  if(/Schroder/i.test(n))return{bg:'#7c3aed',txt:'SC'};
+  if(/Lion/i.test(n))return{bg:'#ca8a04',txt:'LG'};
+  if(/Fullerton/i.test(n))return{bg:'#0891b2',txt:'FT'};
+  if(/abrdn/i.test(n))return{bg:'#1f2937',txt:'ab'};
+  if(/JPMorgan|JP Morgan/i.test(n))return{bg:'#92400e',txt:'JPM'};
+  if(/BGF|BlackRock/i.test(n))return{bg:'#111827',txt:'BR'};
+  if(/Syfe/i.test(n))return{bg:'#2563eb',txt:'Sy'};
+  if(/SPDR/i.test(n))return{bg:'#dc2626',txt:'SP'};
+  if(/Fidelity/i.test(n))return{bg:'#16a34a',txt:'Fi'};
+  return{bg:BK[p.cls]?BK[p.cls].hex:'#888',txt:prodTicker(p.name).slice(0,2)};}
+function cleanName(name){return name.replace(/\s*\([A-Z0-9]{2,6}\)\s*$/,'');}
+const SHORT={FI:'Bonds',Funds:'Equities',Cash:'Cash',Alt:'Alts'};
+function bucketSeg(k){return `<div class="segtabs">${KEYS4.map(x=>`<button class="segtab ${x===k?'on':''}" onclick="setBucket('${x}')">${SHORT[x]}</button>`).join('')}</div>`;}
+function sandTile(p,mode){const tk=prodTicker(p.name),hex=BK[p.cls]?BK[p.cls].hex:'#888';
+  const mark=p.ow?'<span class="pbadge ai">AI</span>':(p.edited?'<span class="pbadge ed">Edited</span>':'');
+  if(mode==='in'){const tot=totalVal()||1,pct=Math.round((p.amt||0)/tot*100);
+    return `<div class="stile-row">
+      <div class="picon sm" style="background:${hex};flex-shrink:0">${tk.slice(0,2)}</div>
+      <div class="trow-mid" onclick="openChat('product:${p.id}')">
+        <div class="tname">${cleanName(p.name)} ${mark}</div>
+        <div class="ttk">${tk} · <b style="color:${hex}">${pct}%</b> of plan</div></div>
+      <div class="amtctl">
+        <div class="amtbox"><span>S$</span><input class="amtin" value="${p.amt||0}" inputmode="numeric" onchange="setAmtVal('${p.id}',this.value)" onclick="event.stopPropagation();this.select()"></div>
+      </div>
+      <button class="tilex2" onclick="event.stopPropagation();sbRemove('${p.id}')">×</button>
+    </div>`;}
+  return `<div class="ptile" onclick="sbAdd('${p.id}')"><div class="picon sm" style="background:${hex}">${tk.slice(0,2)}</div>
+    <div style="flex:1;min-width:0"><div class="tname" style="text-align:left">${cleanName(p.name)}</div><div class="ttk" style="text-align:left">${tk}${p.why?' · '+p.why:''}</div></div><span class="tileadd">＋</span></div>`;}
+function setBucket(k){state.activeBucket=k;keepScroll(render);}
+function holdingsSummary(){const t=state.simT||0;return KEYS4.map(k=>{const ps=PRODUCTS.filter(p=>p.bucket===k);if(!ps.length)return '';
+  const mult=Math.pow(1+RET[k],t),g=Math.round((mult-1)*100);
+  return `<div class="hsumg"><div class="hsumh"><span class="bdot" style="background:${BK[k].hex}"></span>${BK[k].name}<span class="hsumw">${state.buckets[k]}%</span></div>`+
+    ps.map(p=>`<div class="hsumr"><span class="hsumn">${cleanName(p.name)}${p.edited?' <span class="pbadge ed">Edited</span>':''}</span><span class="hsumg2"><b style="color:${g>0?'#1f9d57':'var(--ink2)'}">${g>=0?'+':''}${g}%</b> · S$${Math.round((p.amt||0)*mult).toLocaleString()}</span></div>`).join('')+`</div>`;}).join('');}function openTune(k){state.editBucket=k;state._coachMsg=null;go('tune');}
+function closeTune(){go('portfolio');}
+function addProd(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;p.bucket=p.cls;if(!p.amt)p.amt=p.rec||10000;p.edited=true;recalcBuckets();state._coachMsg=bucketCoach('add',p);keepScroll(render);}
+function removeProd(id){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;p.bucket=null;p.amt=0;p.edited=true;recalcBuckets();state._coachMsg=bucketCoach('remove',p);keepScroll(render);}
+function setAmt(id,delta){const p=PRODUCTS.find(x=>x.id===id);if(!p||p.bucket==null)return;p.amt=Math.max(0,(p.amt||0)+delta);p.edited=true;recalcBuckets();keepScroll(render);}
+function setAmtVal(id,val){const p=PRODUCTS.find(x=>x.id===id);if(!p||p.bucket==null)return;const n=Math.round(parseFloat((''+val).replace(/[^0-9.]/g,''))||0);p.amt=Math.max(0,n);p.edited=true;recalcBuckets();state._coachMsg=bucketCoach('tune',p);keepScroll(render);}
+function advanceSim(unit){const inc=unit==='week'?1/52:unit==='month'?1/12:1;
+  state.simT=Math.min(horizon(),(state.simT||0)+inc);keepScroll(render);}
+function resetSim(){state.simT=0;keepScroll(render);}
+function simLabel(){let t=state.simT||0;if(t<=0.0001)return 'today';
+  if(t<1/12){const w=Math.max(1,Math.round(t*52));return w+' week'+(w!==1?'s':'')+' in';}
+  if(t<1){const m=Math.round(t*12);return m+' month'+(m!==1?'s':'')+' in';}
+  const y=Math.floor(t+1e-9),m=Math.round((t-y)*12);return y+'y'+(m?' '+m+'mo':'')+' in';}
+function linkSG(){showModal(`<div class="applogo" style="background:#d42e2e">SGFinDex</div><h3>Link via SGFinDex</h3>
+  <p>Securely pull your CPF, HDB and other-bank balances through Singapore's national financial data exchange. Read-only, with your Singpass consent.</p>
+  <button class="btn primary" onclick="hideModal();toast('SGFinDex linked ✓ — plan sharpened')">Continue with Singpass</button>
+  <button class="btn ghost" onclick="hideModal()">Maybe later</button>`);}
+const CHANNEL={FI:'Bonds & bond funds',Funds:'ETFs via OCBC',Cash:'Cash funds',Alt:'REITs & Gold'};
+function placeOrder(){const prods=PRODUCTS.filter(p=>p.bucket);const total=totalVal();
+  showModal(`<div class="miniprog">
+    <div class="mptop"><span class="mptag">OCBC order ticket</span><span style="font-size:11px;color:var(--muted)">inside OCBC app</span></div>
+    <div class="applogo" style="background:#ec1c24">OCBC</div>
+    <h3 style="text-align:left">Confirm your order</h3>
+    <p style="text-align:left;margin-bottom:8px">One order — OCBC executes it across the right channels. Debited from your 360 Account, held in your OEA.</p>
+    <div class="miniorder">
+      <div class="orow"><span class="oname">Holdings</span><span class="oamt">${prods.length} funds · ${KEYS4.filter(k=>PRODUCTS.some(p=>p.bucket===k)).length} asset classes</span></div>
+      <div class="orow"><span class="oname">From</span><span class="oamt">360 · •••• 8842</span></div>
+      <div class="orow"><span class="oname">Into</span><span class="oamt">OEA investment a/c</span></div>
+      <div class="orow total"><span class="oname"><b>Total</b></span><span class="oamt"><b>S$${total.toLocaleString()}</b></span></div>
+    </div>
+    <button class="btn primary" onclick="execOrder()">Place order with OCBC</button>
+    <button class="btn ghost" onclick="hideModal()">Back</button></div>`);}
+function execOrder(){state.invested=true;const total=totalVal();const n=PRODUCTS.filter(p=>p.bucket).length;hideModal();
+  showModal(`<div style="text-align:center">
+    <div class="okcheck">✓</div>
+    <h3 style="text-align:center;margin-bottom:4px">Order placed with OCBC</h3>
+    <p style="text-align:center;margin-bottom:12px">Your ${n} holdings are being bought now and will settle into your OCBC Investment Account — all within the app you already use.</p>
+    <div class="miniorder">
+      <div class="orow"><span class="oname">Invested</span><span class="oamt">S$${total.toLocaleString()}</span></div>
+      <div class="orow"><span class="oname">Held in</span><span class="oamt">OEA · OCBC app</span></div>
+      <div class="orow"><span class="oname">Status</span><span class="oamt" style="color:#1f9d57">Placed ✓</span></div>
+    </div>
+    <p style="text-align:center;font-size:12px;color:var(--muted);margin:10px 0 2px">Your AI team keeps watching your plan and flags anything worth your attention.</p>
+    <button class="btn primary" onclick="hideModal();go('pilot')">Go to my WealthPilot home →</button>
+  </div>`);}
+
+/* ===== persona: orchestrator if >1 agent, else the chosen agent ===== */
+function aiPersona(){const sel=state.agents||[];if(sel.length>1)return JUDGE;return AGENTS.find(x=>x.id===sel[0])||JUDGE;}
+
+/* ===== real (offline) chat ===== */
+const NEWS=[
+  {x:.16,dir:-1,tk:'XDWT',h:'Tech sells off as rate-cut hopes fade',d:'Mar 2026'},
+  {x:.33,dir:1, tk:'IVV', h:'US earnings beat — equities rebound',d:'Q4 2026'},
+  {x:.52,dir:-1,tk:'IEEM',h:'Emerging markets wobble on China data',d:'2027'},
+  {x:.70,dir:1, tk:'IGLO',h:'Central banks cut rates — bonds rally',d:'2028'},
+  {x:.87,dir:1, tk:'IVV', h:'Broad recovery, fresh market highs',d:'2029'}
+];
+function newsFeed(){return NEWS.map(ev=>`<div class="newscard ${ev.dir>0?'up':'dn'}">
+  <div class="newsdot">${ev.dir>0?'▲':'▼'}</div>
+  <div style="flex:1;min-width:0"><div class="newsh">${ev.h}</div><div class="newsmeta">${ev.d} · affected <b>${ev.tk}</b></div></div></div>`).join('');}
+function chatIntro(ctx){const p=aiPersona();
+  if(ctx.indexOf('product:')===0){const pr=PRODUCTS.find(x=>x.id===ctx.split(':')[1]);const cls=pr&&BK[pr.cls]?BK[pr.cls].name:'this class';
+    return `${pr?cleanName(pr.name):'This fund'} sits in your ${cls} sleeve. Ask me anything — here are a few starters.`;}
+  if(ctx==='projection')return `This is your plan projected forward — with the dips and recoveries a real market throws at you, not a straight line. Ask me about the bumps.`;
+  if(ctx.indexOf('coach:')===0){const k=ctx.split(':')[1];return `You're shaping your ${BK[k]?BK[k].name:''} basket. I react to every move you make — ask me why I picked what I did.`;}
+  return `I'm ${p.name}. Ask me anything about your plan.`;}
+function chatChips(ctx){
+  if(ctx.indexOf('product:')===0)return [['why','Why did you recommend this?'],['risk','Is this risky for me?'],['fee','What does it cost?'],['swap','What could I swap it for?']];
+  if(ctx==='projection')return [['ups','Why the ups and downs?'],['worst',"What's the worst case?"],['ontrack','Am I on track for my goal?'],['dip','What should I do in a dip?']];
+  if(ctx.indexOf('coach:')===0)return [['why','Why these funds?'],['add','Should I add more?'],['risk','Is my mix too risky?']];
+  return [['plan','Explain my plan']];}
+function chatAnswer(ctx,qid){const goal=state.goalLabel||'your goal',yrs=horizon();
+  if(ctx.indexOf('product:')===0){const pr=PRODUCTS.find(x=>x.id===ctx.split(':')[1])||{};const cls=BK[pr.cls]?BK[pr.cls].name:'this class';const isEq=pr.cls==='Funds';
+    const A={
+      why:`I chose ${cleanName(pr.name)} because ${pr.why||'it gives clean, low-cost exposure to '+cls.toLowerCase()}. It fits your ${goal} over ${yrs} years and complements what you already hold.`,
+      risk:`It lives in your ${cls} sleeve, so on its own it's ${isEq?"on the higher-risk side — but it's sized as part of a diversified mix, not a single bet":'relatively steady and helps smooth the overall ride'}. With your home loan to service, I kept your total equity weight within your comfort.`,
+      fee:`It's a low-cost ${/ETF/.test(pr.name||'')?'ETF':'fund'} — roughly 0.1–0.5% a year. I lean on cheap building blocks so fees don't quietly eat into ${goal}.`,
+      swap:`Happy to. In the sandbox you'll see other ${cls} options — tap one in and I'll tell you exactly what it does to your mix.`};
+    return A[qid]||`Good question about ${cleanName(pr.name)}.`;}
+  if(ctx==='projection'){const A={
+      ups:`Markets never move in a straight line. The dips are normal pullbacks — rate scares, earnings wobbles — and the recoveries are the market compounding through them. Your ${yrs}-year horizon is exactly what lets you ride them out.`,
+      worst:`In a rough stretch this mix could fall ${state.buckets.Funds>50?'20–30%':'10–20%'} before recovering. That's why I hold ${state.buckets.Cash+state.buckets.FI}% in cash and bonds — it cushions the drop and leaves dry powder.`,
+      ontrack:`You're tracking toward about S$${Math.round(targetVal()/1000)}k by ${2025+yrs}, which keeps ${goal} broadly within reach. Adding a little each month builds in a bigger safety margin.`,
+      dip:`Nothing rash. Dips are when staying invested pays off — and with spare cash they're a chance to top up. I'll flag it to you and your RM if a rebalance makes sense.`};
+    return A[qid]||`Let me walk you through the projection.`;}
+  if(ctx.indexOf('coach:')===0){const k=ctx.split(':')[1];const A={
+      why:`For your ${BK[k]?BK[k].name:''} sleeve I leaned on low-cost, broad funds matched to ${goal} and your risk comfort — the ones marked "AI" are mine.`,
+      add:`You can pull more in from the rail. More holdings means more diversification, but past about 4–5 per class the benefit fades and overlap creeps in.`,
+      risk:`Your mix is currently ${riskLabel()}. ${state.buckets.Funds>55?'It leans growth-heavy — fine for your horizon, but worth watching alongside your home loan.':'It sits comfortably inside your profile.'}`};
+    return A[qid]||`Happy to explain my picks.`;}
+  return `Here's how I'd think about your plan.`;}
+function openChat(ctx){state._chat={ctx:ctx,msgs:[{who:'ai',text:chatIntro(ctx)}]};renderChat();}
+function chatAsk(qid){const c=state._chat;if(!c)return;const found=chatChips(c.ctx).find(x=>x[0]===qid);const q=found?found[1]:qid;
+  c.msgs.push({who:'me',text:q});c.msgs.push({who:'ai',text:chatAnswer(c.ctx,qid)});renderChat();}
+function chatSend(){const c=state._chat;if(!c)return;const el=document.getElementById('chatIn');const t=(el&&el.value||'').trim();if(!t)return;
+  c.msgs.push({who:'me',text:t});c.msgs.push({who:'ai',text:chatFreeAnswer(c.ctx,t)});renderChat();}
+function chatFreeAnswer(ctx,text){const s=text.toLowerCase();const goal=state.goalLabel||'your goal',yrs=horizon();
+  const has=(...ws)=>ws.some(w=>s.indexOf(w)>=0);const isProd=ctx.indexOf('product:')===0;
+  const ret=(pRetEff()*100).toFixed(1),proj=(typeof sandProjValue==='function'?sandProjValue():targetVal()),tgt=targetVal();
+  // greetings / smalltalk
+  if(has('hello','hi ','hii','hey','yo ','good morning','good afternoon'))return `Hi! I'm ${aiPersona().name}. Ask me anything about your plan — the funds, the risk, what it might return, the ups and downs, or what to do next.`;
+  if(has('thank','thanks','cheers','great','awesome','nice','got it','makes sense','cool','okay','ok '))return `Anytime — that's what I'm here for. Anything else about your plan you want to dig into?`;
+  if(has('are you real','are you human','are you a bot','are you ai','a robot','chatgpt','who made you'))return `I'm an AI — part of your WealthPilot team. I read your real OCBC data to shape and watch your plan, and I stay on after you invest. I'll always tell you when something needs a human RM's sign-off.`;
+  if(has('joke','bored','love you','marry','stupid','dumb','useless'))return `Ha — I'll stick to what I'm good at: keeping your plan on course toward ${goal}. Ask me about the funds, the risk, or the projection.`;
+  if(has('make it safer','less risk','too aggressive','more conservative','play safe','play it safe','reduce risk','dial down','too risky for me'))return `Easy — on the risk screen you can dial your profile toward conservative, and I'll shift weight from equities into bonds and cash. Your projection dips a little, but the ride gets smoother. Want me to walk you through it?`;
+  if(has('more aggressive','higher return','want more risk','riskier','grow faster','maximi'))return `I can tilt you toward growth — more equities and alternatives — for a higher target return, with bigger swings along the way. It has to stay within what a bank deems suitable, but there's room. Adjust it on the risk screen anytime.`;
+  if(has('goal change','goal changes','change my goal','different goal','new goal','update goal','if my goal','my goal is now'))return `If your goal shifts — bigger home, new timeline — just tell your team and I'll re-plan from scratch: new target, new mix, new projection. Nothing here is locked in.`;
+  if(has('how do i start','how to begin','get started','next step','how do i invest','actually start','can i start','ready to start','begin investing'))return `From your plan you tap through to place it — the whole mix routes straight into your OCBC app, funded from your account. A few taps and you're invested; I take it from there.`;
+  if(has('every day','check it','how often','monitor','watch it','daily','set and forget','automatic','do i need to do anything','keep checking'))return `You don't need to watch it daily — that's my job. I monitor your mix continuously and only ping you when something genuinely needs your attention, like a rebalance or drift from ${goal}.`;
+  // trust / safety / regulation
+  if(has('safe','scam','legit','trust','protected','guarantee','secure','mas ','regulat','my money safe'))return `Your money sits in regulated funds and your own OCBC accounts — WealthPilot never holds it. Markets still carry risk, so nothing's guaranteed, but I keep your mix inside your assessed risk profile and flag anything that needs your RM.`;
+  // vs savings / fixed deposit / inflation
+  if(has('fixed deposit',' fd','savings account','just save','leave it in the bank','keep it in cash','why invest'))return `A deposit feels safe but earns ~2–3% — often barely beating inflation. Your plan targets about <b>${ret}% a year</b>, so over ${yrs} years it's the difference between treading water and actually reaching ${goal}. The trade-off is short-term ups and downs.`;
+  if(has('inflation','cost of living','lose value','purchasing power'))return `Good instinct — cash quietly loses to inflation (~2–3% a year). Targeting ~${ret}% is partly about staying ahead of it, so your money grows in real terms, not just on paper.`;
+  // what is X
+  if(has('what is an etf','what are etf','what is a fund','what is a unit trust','what are these funds','whats an etf'))return `An ETF or fund is a single basket holding hundreds of companies or bonds — so one purchase gives you instant diversification at low cost. It's why I build with them instead of picking individual stocks.`;
+  if(has('what is fixed income','what are bonds','what is a bond'))return `Fixed income (bonds) is money you lend to governments or companies for steady interest. It's the calmer part of your mix — lower return (~4%), but it cushions the equity swings.`;
+  if(has('what is equit','what are stocks','what are equities','what is alternativ','what are reit','what is gold','what is cash fund'))return `Equities are company shares — your growth engine (~8–9%, but bumpy). Alternatives like REITs and gold add diversification that moves differently from stocks. Cash funds are your steady, liquid buffer. Together they balance growth and safety toward ${goal}.`;
+  if(has('compound','how does it grow','grow over time','snowball'))return `Compounding is your returns earning their own returns. At ~${ret}% a year, reinvested, the gains build on themselves — which is why time in the market matters far more than timing it.`;
+  if(has('dividend','payout','passive income','income from','distribut'))return `Some of your funds pay dividends; in a growth plan these are usually reinvested to compound harder toward ${goal}. If you'd rather draw an income, I can tilt toward income-paying holdings — just say so.`;
+  // robo / how different
+  if(has('robo','how is this different','better than other','different from','syfe','endowus','stashaway'))return `Unlike a typical robo that hands you a form and a fixed portfolio, I start from what OCBC already knows about you, explain every choice, let you simulate changes in the sandbox, and stay involved after you invest. It's advice that keeps talking to you.`;
+  // minimum / how much needed / start
+  if(has('minimum','how much do i need','need a lot','enough money','too little','small amount'))return `No big minimum — you can start with what you have. Today that's your S$${Math.round((BANK_KNOWN.investableAssets)/1000)}k plus monthly top-ups. The habit matters more than the size.`;
+  if(has('how do i start','how to begin','what do i do next','get started','next step','how do i invest'))return `From your plan you tap through to place it — the whole mix routes straight into your OCBC app, funded from your account. A few taps and you're invested; I take it from there.`;
+  // human / RM
+  if(has('human','relationship manager',' rm','advisor','speak to someone','talk to a person','real person','banker'))return `Absolutely — you can hand off to a human RM anytime, and I'll pass them your full plan so you don't repeat yourself. I handle the day-to-day; they step in for the big, personal calls.`;
+  // monitoring / set and forget
+  if(has('check every day','how often','monitor','watch it','daily','set and forget','automatic','do i need to do anything'))return `You don't need to watch it daily — that's my job. I monitor your mix continuously and only ping you when something genuinely needs your attention, like a rebalance or a drift from ${goal}.`;
+  // double / get rich / performance
+  if(has('double','when will it double','triple','rich','millionaire','retire early'))return `At ~${ret}% a year, money roughly doubles every ${Math.max(6,Math.round(72/Math.max(1,+ret)))} years (the rule of 72). It's steady wealth-building toward ${goal}, not a get-rich-quick scheme — and that's exactly why it's reliable.`;
+  if(has('past performance','track record','historical','how has it done','backtest','returns history'))return `I size expectations from long-run asset-class returns, not a lucky streak. Past performance never guarantees the future — which is why your plan leans on diversification and your ${yrs}-year horizon rather than chasing hot funds.`;
+  // currency / fx
+  if(has('currency','forex',' fx','usd','exchange rate','foreign','overseas'))return `Some funds are global, so there's mild currency movement — but it's spread across markets, not a single bet, and over ${yrs} years it tends to wash out. I keep a home-currency anchor in your mix too.`;
+  // make safer / riskier
+  if(has('make it safer','less risk','too aggressive','more conservative','play safe','reduce risk'))return `Easy — on the risk screen you can dial your profile toward conservative, and I'll shift weight from equities into bonds and cash. Your projection will dip a little, but the ride gets smoother. Want me to walk you through it?`;
+  if(has('more aggressive','higher return','more risk','riskier','grow faster','maximi'))return `I can tilt you toward growth — more equities and alternatives — for a higher target return, with bigger swings along the way. It has to stay within what a bank deems suitable for you, but there's room. Adjust it on the risk screen anytime.`;
+  // recession / crash / scared
+  if(has('recession','bear market','market crash','crash coming','what if the market','black swon','black swan'))return chatAnswer('projection','dip');
+  if(has('scared','nervous','worried','anxious','afraid','risky for me'))return `Totally normal to feel that. That's why your plan isn't all-in on stocks — ${(state.buckets.Cash+state.buckets.FI)}% sits in cash and bonds to soften the drops, and your ${yrs}-year horizon means short-term dips have time to recover. We go at your comfort level.`;
+  // lump sum vs DCA
+  if(has('all at once','lump sum','dollar cost','dca','spread out','invest gradually'))return `You're doing a bit of both: a lump sum now to put your money to work, plus S$${(state.monthly||0).toLocaleString()}/month after. The monthly drip means you buy through dips automatically — a quietly powerful habit.`;
+  // ===== core intents =====
+  if(has('risk','risky','volatil','swing','safe to invest'))return isProd?chatAnswer(ctx,'risk'):`Your mix is currently <b>${riskLabel()}</b>, inside your assessed profile. ${state.buckets.Funds>55?'It leans growth-heavy — good for your horizon, but worth watching alongside your home loan.':'It sits comfortably in your comfort zone, with cash and bonds cushioning the ride.'}`;
+  if(has('lose','loss','lost','wipe','go to zero','bankrupt','go down','negative'))return isProd?chatAnswer(ctx,'risk'):`In a rough stretch this mix could fall ${state.buckets.Funds>50?'20–30%':'10–20%'} before recovering — normal, not failure. The ${(state.buckets.Cash+state.buckets.FI)}% in cash and bonds softens it and leaves dry powder to buy back in.`;
+  if(has('worst','worst case','how bad'))return isProd?chatAnswer(ctx,'risk'):chatAnswer('projection','worst');
+  if(has('why','reason','chose','choose','pick this','recommend'))return chatAnswer(ctx,'why');
+  if(has('cost','fee','charge','expense','commission','hidden','catch','how much does it cost'))return isProd?chatAnswer(ctx,'fee'):`You're in low-cost ETFs and funds — roughly 0.1–0.5% a year, no hidden catch. Cheap building blocks mean fees don't quietly eat into ${goal}.`;
+  if(has('swap','replace','change the fund','alternative','instead','different fund','switch'))return isProd?chatAnswer(ctx,'swap'):`Reshape any basket in the sandbox — tap a fund in or out and I'll show you live what it does to your mix and projection.`;
+  if(has('on track','reach','will i hit','will i have enough','afford','goal','target','make it','enough'))return `You're tracking toward about S$${Math.round(proj/1000)}k by ${2025+yrs} for ${goal}. ${proj>=tgt?'That keeps your goal within reach.':'There may be a gap — topping up monthly or extending the timeline closes it, and I\'ll always tell you honestly.'}`;
+  if(has('return','grow','gain','earn','profit','roi','expect','how much','average','yield','interest'))return `Your current mix targets roughly <b>${ret}% a year</b> on average over the long run — not guaranteed, and bumpy year to year, but that's the engine compounding toward ${goal}.`;
+  if(has('dip','correction','panic','should i sell','should i do','downturn','sell now','buy more'))return chatAnswer('projection','dip');
+  if(has('how long','timeline','horizon','how many year','when do','duration','time frame'))return `Your plan runs about <b>${yrs} years</b>, to ${2025+yrs}. A longer runway lets you ride out dips and take a little more growth risk; a shorter one means playing safer.`;
+  if(has('monthly','contribute','top up','top-up','save more','per month','each month','add money','regular'))return `You're set to add <b>S$${(state.monthly||0).toLocaleString()}/month</b> on top of your lump sum. Small regular top-ups compound hard over ${yrs} years — the most reliable lever you control toward ${goal}.`;
+  if(has('tax','srs','cpf','relief'))return `This demo doesn't model tax, but OCBC could route eligible holdings through SRS for tax relief. Worth flagging to your RM before you invest.`;
+  if(has('withdraw','cash out','liquid','take out','access my','redeem','lock','need the money','emergency'))return `Your holdings stay liquid — the funds and ETFs can be sold and settled back to your OCBC account within a few days. No lock-in, so an emergency won't trap your money.`;
+  if(has('orchestrator','who are you','who picked','agent','your team','multi','how do you decide'))return state.agents.length>1?`I'm the <b>Orchestrator</b> — I weigh what each agent you picked recommends and blend them into one plan, all from your real OCBC data rather than a generic questionnaire.`:`I'm your <b>${aiPersona().name}</b>, focused on ${goal}. I read your actual OCBC data to shape your plan and stay on after you invest.`;
+  if(has('rebalance','drift','adjust over time','maintain','keep it balanced'))return `As markets move, your mix drifts from target. I watch it and flag when a rebalance makes sense — you, or your RM, approve before anything actually changes.`;
+  if(has('diversif','spread','concentrat','too much in','all in','one basket'))return `Your plan spreads across four asset classes and several funds, so no single market decides your outcome. That diversification is what smooths the ride toward ${goal}.`;
+  if(has('sandbox','edit','adjust the mix','change the mix','tune','tweak'))return `Head into the sandbox from your plan — set the dollar amount in each fund and the donut and projection update live, so you see the trade-offs before committing real money.`;
+  if(has('beginner','new to','explain','how does this work','what is this','don\'t understand','confused','simple','eli5','like im 5'))return `In plain terms: I built you a spread of low-cost funds matched to ${goal} and your risk comfort. You invest a lump sum now, top up monthly, and stay invested through the ups and downs — that compounding is what gets you there. Ask me about any piece of it.`;
+  if(has('change my goal','different goal','new goal','goal change','update goal'))return `If your goal shifts — bigger home, new timeline — just tell your team and I'll re-plan from scratch: new target, new mix, new projection. Nothing here is locked in.`;
+  return `Good question. I can talk through why I picked your funds, how risky your mix is, what it might return, the projection's ups and downs, what to do in a downturn, how top-ups move your goal, fees, tax, withdrawals, or how this compares to leaving it in the bank. What would help most?`;}
+function renderChat(){const c=state._chat;if(!c)return;const p=aiPersona();
+  const body=c.msgs.map(m=>m.who==='ai'
+    ?`<div class="cmsg ai"><div class="cav">${avatar(p)}</div><div class="cbub ai">${m.text}</div></div>`
+    :`<div class="cmsg me"><div class="cbub me">${m.text}</div></div>`).join('');
+  const chips=chatChips(c.ctx).map(x=>`<button class="cchip" onclick="chatAsk('${x[0]}')">${x[1]}</button>`).join('');
+  showModal(`<div class="chatwrap">
+    <div class="chathead"><div class="cav lg">${avatar(p)}</div><div style="text-align:left"><div class="chn">${p.name}</div><div class="chs">${state.agents.length>1?'Your orchestrator':'Your agent'} · ask me anything</div></div></div>
+    <div class="chatbody" id="chatBody">${body}</div>
+    <div class="chatchips">${chips}</div>
+    <div class="chatinput">
+      <input id="chatIn" class="chatintxt" placeholder="Type your own question…" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();chatSend();}">
+      <button class="chatsend" onclick="chatSend()" aria-label="Send">↑</button>
+    </div>
+    <button class="btn ghost" style="margin-top:8px" onclick="hideModal()">Close</button>
+  </div>`);
+  setTimeout(()=>{const b=document.getElementById('chatBody');if(b)b.scrollTop=b.scrollHeight;
+    const inp=document.getElementById('chatIn');if(inp&&c.msgs.some(m=>m.who==='me'))inp.focus();},0);}
+
+/* ===== sandbox add/remove (canvas) ===== */
+function sbAdd(id){addProd(id);}
+function sbRemove(id){removeProd(id);}
+
+/* ===== volatile projection series (real ups & downs + news shocks) ===== */
+function projSeries(){const n=Math.max(24,horizon()*12),r=pRetEff()/12,base=Math.max(1000,state.invest);const pts=[];
+  for(let i=0;i<=n;i++){const t=i/n;
+    const drift=base*Math.pow(1+r,i)+(state.monthly>0?state.monthly*((Math.pow(1+r,i)-1)/r):0);
+    let shock=0;NEWS.forEach(ev=>{const d=t-ev.x;shock+=ev.dir*0.14*Math.exp(-Math.pow(d*7,2));});
+    const wave=Math.sin(i*0.55)*0.055+Math.sin(i*0.27+1)*0.038+Math.sin(i*1.15+2)*0.022;
+    pts.push(Math.max(base*0.6,drift*(1+wave+shock)));}
+  return pts;}
+
+/* ===== live sandbox projection (updates as you add/remove) ===== */
+function sandProjValue(yrs){const r=pRetEff(),rm=r/12,n=(yrs||horizon())*12;let v=(totalVal()||0)*Math.pow(1+rm,n);
+  if(state.monthly>0)v+=state.monthly*((Math.pow(1+rm,n)-1)/rm);return Math.round(v);}
+function sandSeries(){const n=Math.max(24,horizon()*12),r=pRetEff()/12,base=totalVal()||0;const pts=[];
+  for(let i=0;i<=n;i++){let v=base*Math.pow(1+r,i)+(state.monthly>0?state.monthly*((Math.pow(1+r,i)-1)/r):0);
+    const wave=Math.sin(i*0.5)*0.016+Math.sin(i*0.23+1)*0.011;pts.push(v*(1+wave));}
+  return pts;}
+function sandMiniChart(){const pts=sandSeries(),n=pts.length-1,t=targetVal(),yrs=horizon();
+  const W=300,H=104,padL=36,padR=8,padT=8,padB=16;
+  const aiv=state._aiProj||pts[n];
+  const ceil=Math.max(t,aiv,Math.max.apply(null,pts))*1.06, floor=Math.min(POOL,Math.min.apply(null,pts))*0.97;
+  const plotW=W-padL-padR, plotH=(H-padB)-padT;
+  const X=i=>padL+i/n*plotW,Y=v=>(H-padB)-(v-floor)/(ceil-floor)*plotH;
+  const ok=pts[n]>=t,col=ok?'#1f9d57':'#e0883a',gy=Y(t);
+  let out=`<svg width="100%" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none">`;
+  // y gridlines + value labels
+  for(let g=0;g<=2;g++){const yy=padT+g*plotH/2;const val=ceil-(g/2)*(ceil-floor);
+    out+=`<line x1="${padL}" y1="${yy.toFixed(1)}" x2="${W-padR}" y2="${yy.toFixed(1)}" stroke="rgba(0,0,0,.05)"/>`;
+    out+=`<text x="${padL-5}" y="${(yy+3).toFixed(1)}" text-anchor="end" font-family="Inter" font-size="7.5" fill="#9aa0aa">S$${Math.round(val/1000)}k</text>`;}
+  // axis lines
+  out+=`<line x1="${padL}" y1="${padT}" x2="${padL}" y2="${H-padB}" stroke="rgba(0,0,0,.16)"/>`;
+  out+=`<line x1="${padL}" y1="${H-padB}" x2="${W-padR}" y2="${H-padB}" stroke="rgba(0,0,0,.16)"/>`;
+  // goal line
+  out+=`<line x1="${padL}" y1="${gy.toFixed(1)}" x2="${W-padR}" y2="${gy.toFixed(1)}" stroke="#9aa0aa" stroke-width="1.2" stroke-dasharray="4 4"/>`;
+  out+=`<text x="${padL+3}" y="${Math.max(padT+8,gy-4).toFixed(1)}" font-family="Inter" font-size="8" fill="#737984">Goal S$${Math.round(t/1000)}k</text>`;
+  // AI plan reference
+  if(state._aiProj){const ay=Y(state._aiProj);out+=`<line x1="${padL}" y1="${ay.toFixed(1)}" x2="${W-padR}" y2="${ay.toFixed(1)}" stroke="#a98bff" stroke-width="1.2" stroke-dasharray="3 3" opacity=".8"/><text x="${W-padR}" y="${Math.max(padT+8,ay-3).toFixed(1)}" text-anchor="end" font-family="Inter" font-weight="700" font-size="8" fill="#7c5cf0">AI plan S$${Math.round(state._aiProj/1000)}k</text>`;}
+  // area + line
+  let d='';for(let i=0;i<=n;i++)d+=(i?'L':'M')+X(i).toFixed(1)+' '+Y(pts[i]).toFixed(1)+' ';
+  out+=`<path d="${d}L ${X(n).toFixed(1)} ${H-padB} L ${X(0).toFixed(1)} ${H-padB} Z" fill="${col}" opacity=".12"/>`;
+  out+=`<path d="${d}" fill="none" stroke="${col}" stroke-width="2.4" stroke-linejoin="round"/>`;
+  out+=`<circle cx="${X(n).toFixed(1)}" cy="${Y(pts[n]).toFixed(1)}" r="3.8" fill="${col}"/>`;
+  // x-axis year labels
+  [0,Math.round(n/2),n].forEach(i=>{const yr=2025+Math.round((i/n)*yrs);
+    out+=`<text x="${X(i).toFixed(1)}" y="${H-4}" text-anchor="${i===0?'start':i>=n?'end':'middle'}" font-family="Inter" font-size="7.5" fill="#9aa0aa">${i===0?'Now':yr}</text>`;});
+  out+=`</svg>`;return out;}
+function sandProjPanel(){const yr=2025+horizon(),proj=sandProjValue(),t=targetVal(),ok=proj>=t,short=Math.max(0,Math.round((t-proj)/1000));
+  const r=pRetEff();const ytg=(r>0&&t>POOL)?Math.log(t/POOL)/Math.log(1+r):0;const hitYr=Math.ceil(2025+ytg);const late=Math.max(1,hitYr-yr);
+  const base=state._aiProj||proj;const dv=Math.round((proj-base)/1000);
+  const delta=Math.abs(dv)<1?'<span class="spjdelta flat">● Matches your AI plan</span>':(dv<0?`<span class="spjdelta dn">▼ S$${Math.abs(dv)}k below your AI plan</span>`:`<span class="spjdelta up">▲ S$${dv}k above your AI plan</span>`);
+  return `<div class="sandproj ${ok?'ok':'warn'}">
+    <div class="spjtop"><div><div class="spjlbl">Projected at this mix</div><div class="spjval">S$${Math.round(proj/1000)}k <span>by ${yr}</span></div>${delta}</div>
+      <div class="spjpill ${ok?'ok':'warn'}">${ok?'On track':'Off target'}</div></div>
+    <div class="spjchart">${sandMiniChart()}</div>
+    <div class="spjmsg">${ok
+      ?`On track to reach your S$${Math.round(t/1000)}k goal by ${yr}. Pull funds out and watch this line fall toward — or below — the goal.`
+      :`At this mix you'd fall about <b>S$${short}k short</b> by ${yr}${ytg?` — you'd only reach your S$${Math.round(t/1000)}k goal around <b>${hitYr}</b>, ${late} year${late>1?'s':''} late`:''}. Add funds back to recover.`}</div>
+  </div>`;}
+
+function renderBuckets(){return bucketTabs()+bucketCard(state.activeBucket);}
 function bucketCard(k){const active=PRODUCTS.filter(p=>p.bucket===k);const avail=PRODUCTS.filter(p=>p.cls===k&&p.inShelf);
   const bv=bucketVal(k);
   return `<div class="bucketcard" id="bc_${k}" ondragover="allowDrop(event,'${k}')" ondragleave="leaveDrop('${k}')" ondrop="dropTo(event,'${k}')">
@@ -1499,14 +2323,14 @@ function bucketCard(k){const active=PRODUCTS.filter(p=>p.bucket===k);const avail
     ${active.map(p=>prodHTML(p,'active')).join('')||`<div style="font-size:12px;color:var(--muted);margin-top:8px;text-align:center;padding:6px;border:1px dashed var(--line);border-radius:10px">Add a product below</div>`}
     ${avail.length?`<div class="addrow" onclick="toggleExpand('${k}')"><span><span class="ai-orb" style="width:13px;height:13px;vertical-align:-1px"></span> Add ${BK[k].name} funds</span><span class="addcount">${avail.length} available ${state.expand[k]?'▲':'▾'}</span></div>${state.expand[k]?avail.map(p=>prodHTML(p,'avail')).join(''):''}`:''}
   </div>`;}
-function toggleExpand(k){state.expand[k]=!state.expand[k];keepScroll(()=>{$('buckets').innerHTML=KEYS4.map(bucketCard).join('');});}
+function toggleExpand(k){state.expand[k]=!state.expand[k];keepScroll(()=>{$('buckets').innerHTML=renderBuckets();});}
 
 function prodHTML(p,mode){
   if(mode==='avail'){return `<div class="prod shelf" draggable="true" ondragstart="dragStart(event,'${p.id}')" onclick="tapAddFixed('${p.id}')">
     <span class="pn">${p.name}</span>${p.ow?`<span class="hv ow">★ Top pick</span>`:''}${p.why?`<span class="why">· ${p.why}</span>`:''}
     <span class="addamt">+S$${Math.round((p.rec||15000)/1000)}k</span><span class="px">＋</span></div>`;}
   return `<div class="prodc">
-    <div class="prow"><span class="pn">${p.name}</span>${p.ow?`<span class="hv ow">★ Top pick</span>`:''}<span class="px" onclick="removeProd('${p.id}')">✕</span></div>
+    <div class="prow"><span class="pn">${p.name}</span>${p.ow?`<span class="hv ow">★ Top pick</span>`:''}<span class="px" onclick="removeProdLegacy('${p.id}')">✕</span></div>
     <div class="amtline"><button class="amtbtn" onclick="editAmt('${p.id}',-5000)">−</button><span class="qinwrap amtinwrap"><span class="qpfx">S$</span><input class="qin amtin" id="amtin_${p.id}" inputmode="numeric" value="${(p.amt||0).toLocaleString()}" onchange="setAmt('${p.id}',this.value)"></span><button class="amtbtn" onclick="editAmt('${p.id}',5000)">+</button>${p.why?`<span class="why" style="margin-left:auto">· ${p.why}</span>`:''}</div>
   </div>`;}
 
@@ -1515,13 +2339,13 @@ function warnHTML(){return `<div class="card" style="background:#fff7ed;border-c
   <div style="font-size:12px;color:#9a4a06;line-height:1.45">This mix is <b>${riskLabel().toLowerCase()} risk</b> — above your assessed <b>${(state.riskAssessed||riskProfile())}</b> risk profile. A bank would only let you go one level higher with a documented reason. Consider trimming Equities or Alternatives.</div></div>`;}
 
 function paperBody(){const pp=state.paper;
-  if(!pp.started){if(!pp._touched)pp.amount=totalVal()||120000;const A=v=>pp.amount===v?'on':'';
+  if(!pp.started){if(!pp._touched)pp.amount=totalVal()||96000;const A=v=>pp.amount===v?'on':'';
     return `<div class="card" style="text-align:center;padding:24px 16px">
     <div class="ai-orb" style="width:48px;height:48px;margin:0 auto 14px"></div>
     <div class="disp" style="font-weight:700;font-size:17px">Your starting amount</div>
     <div class="sub" style="margin:8px 0 10px">We'll open simulated positions in your sandbox mix using this amount. Change it anytime.</div>
     <div class="row" style="justify-content:center;gap:14px;margin:6px 0 8px"><button class="pm" onclick="bumpPaperAmt(-10000)">−</button><b id="paV" style="font-family:'Sora';font-size:22px">S$${pp.amount.toLocaleString()}</b><button class="pm" onclick="bumpPaperAmt(10000)">+</button></div>
-    <div class="seg" style="margin-bottom:12px"><div class="s ${A(50000)}" onclick="setPaperAmt(50000)">S$50k</div><div class="s ${A(100000)}" onclick="setPaperAmt(100000)">S$100k</div><div class="s ${A(totalVal()||120000)}" onclick="setPaperAmt(${totalVal()||120000})">My plan (S$${Math.round((totalVal()||120000)/1000)}k)</div></div>
+    <div class="seg" style="margin-bottom:12px"><div class="s ${A(50000)}" onclick="setPaperAmt(50000)">S$50k</div><div class="s ${A(100000)}" onclick="setPaperAmt(100000)">S$100k</div><div class="s ${A(totalVal()||96000)}" onclick="setPaperAmt(${totalVal()||96000})">My plan (S$${Math.round((totalVal()||96000)/1000)}k)</div></div>
     <button class="btn ai glowpulse" onclick="startPaper()">Start paper trading</button>
     <div class="disc">Simulation only — not a real order, and not a guarantee of returns.</div></div>`;}
   const cur=pp.series[pp.series.length-1], pnl=cur-pp.base, pct=(pnl/pp.base*100);
@@ -1559,7 +2383,6 @@ function toggleAgent(id){
   if(!Array.isArray(state.agents)) state.agents = [];
   const i=state.agents.indexOf(id);
   if(i>=0){
-    if(state.agents.length<=1){toast('Pick at least one agent');return;}
     state.agents.splice(i,1);
   } else {
     if(state.agents.length>=2){toast('Up to 2 agents');return;}
@@ -1626,9 +2449,9 @@ function manualModal(){showModal(`<div class="applogo" style="background:#5a6470
 function addManual(){const nm=($('mName').value||'').trim();const v=parseInt(($('mVal').value||'').replace(/[^0-9]/g,''))||0;
   const st=($('mStocks')&&$('mStocks').value||'').trim();
   if(!nm){toast('Enter an account name');return;}
-  state.providers.push({id:'m'+Date.now(),name:nm,sub:st?'Holds: '+st:'Manually added',color:'#5a6470',val:v,linked:true,short:nm.slice(0,2).toUpperCase(),stocks:st});
+  state.providers.push({id:'m'+Date.now(),name:nm,sub:st?'Holds: '+st:'Manually added',color:'#5a6470',val:v,linked:true,manual:true,short:nm.slice(0,2).toUpperCase(),stocks:st});
   hideModal();refreshLinkUI();toast(nm+' added ✓');}
-function refreshLinkUI(){if($('provList'))$('provList').innerHTML=state.providers.map(provRow).join('');
+function refreshLinkUI(){if($('provList'))$('provList').innerHTML=state.providers.filter(p=>p.manual).map(provRow).join('')||'<div class="sbempty">None added yet.</div>';
   const conf=confidence();if($('confVal'))$('confVal').textContent=conf+'%';if($('confBar'))$('confBar').style.width=conf+'%';
   if($('netVal'))$('netVal').textContent='S$'+linkedNet().toLocaleString();
   const left=Math.max(0,5-state.providers.filter(x=>x.linked).length);
@@ -1649,7 +2472,7 @@ function runAnalyze(){analyzeRun=false;setTimeout(()=>{
         <div><div class="veyebrow">Orchestrator · The Verdict</div><div class="vtitle">Your recommended allocation</div></div></div>
       <div class="vsub">Balancing ${names} for your ${goalLabel()}. Figures are the share (%) of your portfolio in each asset class.</div>
       <div class="vbars">${bars}</div></div>`;}
-    const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn ai glowpulse" style="animation:slideup .3s ease" onclick="go('reco')">See my full plan →</button>`;},after);
+    const cta=$('analyzeCta');if(cta)cta.innerHTML=`<button class="btn ai glowpulse" style="animation:slideup .3s ease" onclick="go('reco')">See my recommended plan →</button>`;},after);
 },60);}
 
 function setChart(t){state.chart=t;document.querySelectorAll('.chartcard .seg .s').forEach(s=>s.classList.remove('on'));event.target.classList.add('on');$('chartBox').innerHTML=projChart();}
@@ -1671,9 +2494,9 @@ function refreshChrome(){
     box.innerHTML=`<span>Total invested</span><span>S$${totalVal().toLocaleString()} · ${PRODUCTS.filter(p=>p.bucket).length} holdings</span>`;}
 }
 function editAmt(id,d){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;p.amt=Math.max(0,(p.amt||0)+d);
-  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=KEYS4.map(bucketCard).join('');});refreshChrome();setAI(p.bucket);}
+  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=renderBuckets();});refreshChrome();setAI(p.bucket);}
 function setAmt(id,v){const p=PRODUCTS.find(x=>x.id===id);if(!p)return;p.amt=Math.max(0,parseInt(String(v).replace(/[^0-9]/g,''))||0);
-  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=KEYS4.map(bucketCard).join('');});refreshChrome();setAI(p.bucket);}
+  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=renderBuckets();});refreshChrome();setAI(p.bucket);}
 function setTarget(v){state.target=Math.max(10000,parseInt(String(v).replace(/[^0-9]/g,''))||0);refreshChrome();}
 
 /* drag & drop + tap — products are class-locked */
@@ -1687,10 +2510,10 @@ function dropTo(e,k){e.preventDefault();$('bc_'+k).classList.remove('dragover');
   addToBucket(id,k);}
 function tapAddFixed(id){const p=PRODUCTS.find(x=>x.id===id);if(p)addToBucket(id,p.cls);}
 function addToBucket(id,k){const p=PRODUCTS.find(x=>x.id===id);if(!p||p.cls!==k)return;p.bucket=k;p.inShelf=false;p.amt=p.rec||15000;state.drag=null;
-  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=KEYS4.map(bucketCard).join('');});
+  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=renderBuckets();});
   setAI(k,`Added <b>${p.name}</b> at S$${(p.amt).toLocaleString()}. ${AI_LINES.add}`);refreshChrome();toast('Added to '+BK[k].name);}
-function removeProd(id){const p=PRODUCTS.find(x=>x.id===id);p.inShelf=true;p.bucket=null;p.amt=0;
-  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=KEYS4.map(bucketCard).join('');});
+function removeProdLegacy(id){const p=PRODUCTS.find(x=>x.id===id);p.inShelf=true;p.bucket=null;p.amt=0;
+  recalcBuckets();keepScroll(()=>{$('buckets').innerHTML=renderBuckets();});
   setAI('remove',`Returned <b>${p.name}</b> to the ${BK[p.cls].name} add-list.`);refreshChrome();}
 function closePicker(){const p=$('pk');if(p)p.remove();}
 
