@@ -799,21 +799,6 @@
   .hsumn{color:var(--ink2);min-width:0}
   .hsumg2{color:#1f9d57;font-weight:700;flex-shrink:0}
   .hsumhint{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:10px;background:var(--bg);border-radius:11px;padding:10px 12px}
-
-  /* ===== mobile: when opened directly on a phone (e.g. via QR code), strip away
-     every bit of demo chrome — no demobar, no fake bezel/notch/status bar — so
-     it feels like a real app, not a prototype wrapped in a mockup ===== */
-  @media (max-width:480px){
-    html,body{height:100dvh}
-    body{padding:0;align-items:stretch;background:var(--bg)}
-    .demobar{display:none}
-    .phone{flex:1;min-height:0;width:100%;max-width:100%;background:transparent;
-      border-radius:0;padding:0;box-shadow:none;display:flex}
-    .screen{flex:1;min-height:0;height:auto;width:100%;border-radius:0}
-    .notch,.statusbar{display:none}
-    .view{padding-bottom:env(safe-area-inset-bottom)}
-    .chatfab{top:12px}
-  }
 </style>
 
 <div class="demobar">
@@ -1899,7 +1884,7 @@ pilot(){const inv=totalVal(),curV=Math.round(inv*1.047),gain=curV-inv,gpct=(gain
       <div class="feedtext"><b>${n.ev}</b> ${n.ef} ${n.rec}</div>
       <a class="learnlink" onclick="learnMore('${a.id}')">Learn more →</a>
     </div>`;}).filter(Boolean).join('');
-  return appbar('My OneTeam','home')+`<div class="pad" style="padding-top:6px">
+  return appbar('Home','home')+`<div class="pad" style="padding-top:6px">
   <div class="pilotHero">
     <div class="row" style="margin-bottom:2px"><span class="livedot"></span><div style="font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;opacity:.85">Your AI team · watching the markets for you</div></div>
     <div style="font-size:12px;opacity:.8;margin-top:8px">Portfolio value</div>
