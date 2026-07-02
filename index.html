@@ -631,6 +631,11 @@
   .cbub{font-size:13px;line-height:1.5;padding:10px 13px;border-radius:14px;max-width:78%}
   .cbub.ai{background:var(--bg);color:var(--ink);border-bottom-left-radius:4px}
   .cbub.me{background:var(--red);color:#fff;border-bottom-right-radius:4px}
+  .cbub.thinking{display:flex;align-items:center;gap:7px;color:var(--muted);font-weight:600}
+  .cbub.thinking .tdots{display:flex;gap:3px}
+  .cbub.thinking .tdots span{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:chatDot 1.2s infinite}
+  .cbub.thinking .tdots span:nth-child(2){animation-delay:.15s}
+  .cbub.thinking .tdots span:nth-child(3){animation-delay:.3s}
   .chatchips{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 4px}
   .chatinput{display:flex;align-items:center;gap:8px;margin-top:10px;background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:5px 5px 5px 15px}
   .chatinput:focus-within{border-color:var(--red);box-shadow:0 0 0 3px rgba(236,28,36,.1)}
@@ -2339,9 +2344,14 @@ function chatAnswer(ctx,qid){const goal=state.goalLabel||'your goal',yrs=horizon
 function openChat(ctx){state._chat={ctx:ctx,msgs:[{who:'ai',text:chatIntro(ctx)}]};renderChat();}
 function chatAsk(qid){const c=state._chat;if(!c)return;const found=chatChips(c.ctx).find(x=>x[0]===qid);const q=found?found[1]:qid;
   const ans=(c.ctx==='global')?chatFreeAnswer(c.ctx,q):chatAnswer(c.ctx,qid);
-  c.msgs.push({who:'me',text:q});c.msgs.push({who:'ai',text:ans});renderChat();}
+  c.msgs.push({who:'me',text:q});c.msgs.push({who:'ai',thinking:true});renderChat();
+  const mi=c.msgs.length-1;
+  setTimeout(()=>{if(state._chat!==c)return;c.msgs[mi]={who:'ai',text:ans};renderChat();},1400+Math.random()*600);}
 function chatSend(){const c=state._chat;if(!c)return;const el=document.getElementById('chatIn');const t=(el&&el.value||'').trim();if(!t)return;
-  c.msgs.push({who:'me',text:t});c.msgs.push({who:'ai',text:chatFreeAnswer(c.ctx,t)});renderChat();}
+  const ans=chatFreeAnswer(c.ctx,t);
+  c.msgs.push({who:'me',text:t});c.msgs.push({who:'ai',thinking:true});renderChat();
+  const mi=c.msgs.length-1;
+  setTimeout(()=>{if(state._chat!==c)return;c.msgs[mi]={who:'ai',text:ans};renderChat();},1400+Math.random()*600);}
 function chatFreeAnswer(ctx,text){const s=text.toLowerCase();const goal=state.goalLabel||'your goal',yrs=horizon();
   const has=(...ws)=>ws.some(w=>s.indexOf(w)>=0);const isProd=ctx.indexOf('product:')===0;
   const ret=(pRetEff()*100).toFixed(1),proj=(typeof sandProjValue==='function'?sandProjValue():targetVal()),tgt=targetVal();
@@ -2411,21 +2421,22 @@ function chatFreeAnswer(ctx,text){const s=text.toLowerCase();const goal=state.go
   return `Good question. I can talk through why I picked your funds, how risky your mix is, what it might return, the projection's ups and downs, what to do in a downturn, how top-ups move your goal, fees, tax, withdrawals, or how this compares to leaving it in the bank. What would help most?`;}
 function renderChat(){const c=state._chat;if(!c)return;const p=aiPersona();
   const body=c.msgs.map(m=>m.who==='ai'
-    ?`<div class="cmsg ai"><div class="cav">${avatar(p)}</div><div class="cbub ai">${m.text}</div></div>`
+    ?`<div class="cmsg ai"><div class="cav">${avatar(p)}</div><div class="cbub ai${m.thinking?' thinking':''}">${m.thinking?'Analysing<span class="tdots"><span></span><span></span><span></span></span>':m.text}</div></div>`
     :`<div class="cmsg me"><div class="cbub me">${m.text}</div></div>`).join('');
-  const chips=chatChips(c.ctx).map(x=>`<button class="cchip" onclick="chatAsk('${x[0]}')">${x[1]}</button>`).join('');
+  const busy=c.msgs.length&&c.msgs[c.msgs.length-1].thinking;
+  const chips=busy?'':chatChips(c.ctx).map(x=>`<button class="cchip" onclick="chatAsk('${x[0]}')">${x[1]}</button>`).join('');
   showModal(`<div class="chatwrap">
     <div class="chathead"><div class="cav lg">${avatar(p)}</div><div style="text-align:left"><div class="chn">${p.name}</div><div class="chs">${state.agents.length>1?'Your orchestrator':'Your agent'} · ask me anything</div></div></div>
     <div class="chatbody" id="chatBody">${body}</div>
     <div class="chatchips">${chips}</div>
     <div class="chatinput">
-      <input id="chatIn" class="chatintxt" placeholder="Type your own question…" autocomplete="off" onkeydown="if(event.key==='Enter'){event.preventDefault();chatSend();}">
-      <button class="chatsend" onclick="chatSend()" aria-label="Send">↑</button>
+      <input id="chatIn" class="chatintxt" placeholder="Type your own question…" autocomplete="off" ${busy?'disabled':''} onkeydown="if(event.key==='Enter'){event.preventDefault();chatSend();}">
+      <button class="chatsend" onclick="chatSend()" aria-label="Send" ${busy?'disabled':''}>↑</button>
     </div>
     <button class="btn ghost" style="margin-top:8px" onclick="hideModal()">Close</button>
   </div>`);
   setTimeout(()=>{const b=document.getElementById('chatBody');if(b)b.scrollTop=b.scrollHeight;
-    const inp=document.getElementById('chatIn');if(inp&&c.msgs.some(m=>m.who==='me'))inp.focus();},0);}
+    const inp=document.getElementById('chatIn');if(inp&&!busy&&c.msgs.some(m=>m.who==='me'))inp.focus();},0);}
 
 /* ===== sandbox add/remove (canvas) ===== */
 function sbAdd(id){addProd(id);}
